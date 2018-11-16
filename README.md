@@ -9,14 +9,16 @@ This application makes use of uwp app desktop extensions support to initiate a w
 submission options
 I use confirmAppClose capability to ensure that system tray, aka notification area, process has been launched that is necessary for functionality that remains in place when uwp app view is no longer directly accessible via task bar icon.  
 I use runFullTrust capability as part of new desktop extensions capability to facilitate launching of a win32 process which is required in this case to register for system tray, aka notification area, exposed process.
-
-Build/Deploy and Run the sample
--------------------------------
-
+  
+# Build/Deploy and Run the sample
  - Visual Studio 2017 and the Windows 10 October/Aprial 2018s Update SDK (version 17134/16299)
  - Select UWP Package project as your starting project
  - Press F5 to run!
-
+  
 Related information: https://github.com/myusrn/uwpSystrayExtension/README.md 
 
+# feature and fix updates
+11/16/18 - following issues found to exist with active window positioning keyboard shortcuts
+1. when in alt+c[enter] state ctrl+leftarrow correctly moves to left 2/3rds but ctrl+rightarrow moves to right 1/3rd not 2/3rds
+2. when in win+leftarrow state ctrl+rightarrow moves to right 2/3rds instead of left 2/3rds and likewise when in win+rightarrow state and enter ctrl+leftarrow
 
