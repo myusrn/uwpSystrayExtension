@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10" IgnorableNamespaces="uap mp rescap">
+  <Identity Name="14136RobertOBrien.AFewWindowsNiceties" Publisher="CN=97AB39F5-C8A8-4ED8-A44F-452C1110B98B" Version="1.1.4.0" />
+  <Properties>
+    <DisplayName>A Few Windows Niceties</DisplayName>
+    <PublisherDisplayName>Robert O'Brien</PublisherDisplayName>
+    <Logo>Images\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+      <uap:VisualElements DisplayName="A Few Windows Niceties [afwn]" Description="A few windows nicities that i've been asking for in windows insider feedback for a while now." BackgroundColor="transparent" Square150x150Logo="Images\Square150x150Logo.png" Square44x44Logo="Images\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png">
+        </uap:DefaultTile>
+      </uap:VisualElements>
+      <Extensions>
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="Win32\SystrayComponent.exe" />
+        <!--<desktop:Extension Category="windows.fullTrustProcess" Executable="SystrayComponent\SystrayComponent.exe" />-->
+        <uap:Extension Category="windows.appService">
+          <uap:AppService Name="SystrayExtensionService" />
+        </uap:Extension>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="afwn">
+            <uap:Logo>Images\StoreLogo.png</uap:Logo>
+            <uap:DisplayName>A Few Windows Niceties</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+    <rescap:Capability Name="confirmAppClose" />
+  </Capabilities>
+</Package>

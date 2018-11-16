@@ -1,0 +1,29 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SystrayExtension">
+
+    <!-- see "uwp css descendant selector equivalent", "uwp stackpanel textblock style targeting" and
+     "uwp define style without targettype" hits such as 
+    https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/xaml-styles -->
+    
+    <Style x:Key="GridStyle1" TargetType="Grid">
+    </Style>
+
+    <Style x:Key="StackPanelStyle1" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="Margin" Value="10,0,0,20" />
+        <Setter Property="BorderBrush" Value="Red" />
+    </Style>
+    
+    <Style x:Key="TextBlockStyle1" TargetType="TextBlock">
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Margin" Value="10,0,0,20" />
+        <!--<Setter Property="Foreground" Value="Purple" />-->  <!-- to confirm being applied -->
+        <!--<Setter Property="FontStyle" Value="Italic" />-->
+    </Style>
+
+</ResourceDictionary>

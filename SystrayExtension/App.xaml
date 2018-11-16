@@ -1,0 +1,30 @@
+﻿<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// This code is licensed under the MIT License (MIT).
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Application
+    x:Class="SystrayExtension.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SystrayExtension"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <!-- app resource dictionary that can cover style, layout and content localization -->
+            <SolidColorBrush x:Key="StackPanelBorderBrushLocalApp1" Color="Red"/>
+            <ThemeResource x:Key="StackPanelBorderBrushSystemApp1" ResourceKey="SystemControlBackgroundBaseMediumBrush"/>
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>
