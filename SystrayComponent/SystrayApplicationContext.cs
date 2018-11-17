@@ -110,7 +110,7 @@ namespace SystrayComponent
             Application.Exit();
         }
 
-        private async void Gkh_KeyDown(object sender, KeyEventArgsEx e)
+        private void Gkh_KeyDown(object sender, KeyEventArgsEx e)
         {
 //#if DEBUG
 //            var awt = paw.GetActiveWindowTitle();
@@ -137,12 +137,12 @@ namespace SystrayComponent
             //}
         }
 
-        private async void Gkh_KeyUp(object sender, KeyEventArgsEx e)
+        private void Gkh_KeyUp(object sender, KeyEventArgsEx e)
         {
             e.Handled = true;
         }
 
-        private async void Rhw_HotkeyPressed(int id)
+        private /* async */ void Rhw_HotkeyPressed(int id)
         {
             if (hotkeyInProgress) return; hotkeyInProgress = true; // prevent reentrancy            
 

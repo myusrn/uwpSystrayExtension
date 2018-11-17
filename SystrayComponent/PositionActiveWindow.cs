@@ -323,10 +323,10 @@ namespace SystrayComponent
                 { 
                     if (awr.Left - pixelError > screenRectangle.Left + leftRightWindowSize + centerWindowSize) mtp = MoveToPosition.Right;
                     else if (awr.Left > screenRectangle.Left + leftRightWindowSize) mtp = MoveToPosition.Center;
-                    else if (awr.Left == screenRectangle.Left + leftRightWindowSize && awr.Right > screenRectangle.Left + leftRightWindowSize + centerWindowSize) mtp = MoveToPosition.Center;
+                    else if (awr.Left == screenRectangle.Left + leftRightWindowSize && Math.Abs(awr.Right - (screenRectangle.Left + leftRightWindowSize + centerWindowSize)) > pixelError) mtp = MoveToPosition.Center;
                     else if (awr.Left == screenRectangle.Left + leftRightWindowSize && awr.Right <= screenRectangle.Left + leftRightWindowSize + centerWindowSize) mtp = MoveToPosition.Left;
                     else if (awr.Left > screenRectangle.Left) mtp = MoveToPosition.Left;
-                    else if (awr.Left == screenRectangle.Left && awr.Right > screenRectangle.Left + leftRightWindowSize) mtp = MoveToPosition.Left;
+                    else if (Math.Abs(awr.Left - screenRectangle.Left) < pixelError && awr.Right > screenRectangle.Left + leftRightWindowSize) mtp = MoveToPosition.Left;
                     else /* if (awr.Left == screeRectangle.Left && awr.Right <= screenRectangle.Left + leftRightWindowSize) */ mtp = MoveToPosition.Right;  // cycle around to other side
                 }
                 else /* (screenPostions == ScreenPositions.OneThirdAndTwoThirds) */
@@ -334,8 +334,9 @@ namespace SystrayComponent
                     if (awr.Left - pixelError > screenRectangle.Left + leftRightWindowSize + centerWindowSize) mtp = MoveToPosition.Right;
                     else if (Math.Abs(awr.Left - (screenRectangle.Left + leftRightWindowSize + centerWindowSize)) < pixelError && awr.Right <= screenRectangle.Right) mtp = MoveToPosition.RightTwoThirds;
                     else if (awr.Left > screenRectangle.Left + leftRightWindowSize) mtp = MoveToPosition.LeftTwoThirds;
-                    else if (awr.Left >= screenRectangle.Left && awr.Right > screenRectangle.Left + leftRightWindowSize + centerWindowSize) mtp = MoveToPosition.LeftTwoThirds;
-                    //else if (awr.Left == screenRectangle.Left && awr.Right <= screenRectangle.Left + leftRightWindowSize + centerWindowSize) mtp = MoveToPosition.Left;
+                    else if (awr.Left > screenRectangle.Left && awr.Right >= screenRectangle.Left + leftRightWindowSize + centerWindowSize) mtp = MoveToPosition.LeftTwoThirds;
+                    else if (awr.Left >= screenRectangle.Left && awr.Right <= screenRectangle.Left + leftRightWindowSize + centerWindowSize &&
+                        Math.Abs(awr.Right - (screenRectangle.Left + leftRightWindowSize)) > pixelError) mtp = MoveToPosition.Left;
                     else if (awr.Left > screenRectangle.Left) mtp = MoveToPosition.Left;
                     else if (awr.Left == screenRectangle.Left && awr.Right > screenRectangle.Left + leftRightWindowSize) mtp = MoveToPosition.Left;
                     else /* if (awr.Left == screeRectangle.Left && awr.Right <= screenRectangle.Left + leftRightWindowSize) */ mtp = MoveToPosition.Right;  // cycle around to other side
@@ -345,12 +346,12 @@ namespace SystrayComponent
             {
                 if (screenPostions == ScreenPositions.LeftCenterRight)
                 {
-                    if (awr.Right + pixelError < screenRectangle.Right - centerWindowSize - leftRightWindowSize) mtp = MoveToPosition.Left;
+                    if (awr.Right + pixelError < screenRectangle.Right - leftRightWindowSize - centerWindowSize) mtp = MoveToPosition.Left;
                     else if (awr.Right < screenRectangle.Right - centerWindowSize) mtp = MoveToPosition.Center;
-                    else if (awr.Right == screenRectangle.Right - leftRightWindowSize && awr.Left < screenRectangle.Left + leftRightWindowSize) mtp = MoveToPosition.Center;
+                    else if (awr.Right == screenRectangle.Right - leftRightWindowSize && Math.Abs(awr.Left - (screenRectangle.Left + leftRightWindowSize)) > pixelError) mtp = MoveToPosition.Center;
                     else if (awr.Right == screenRectangle.Right - leftRightWindowSize && awr.Left >= screenRectangle.Left + leftRightWindowSize) mtp = MoveToPosition.Right;
                     else if (awr.Right < screenRectangle.Right) mtp = MoveToPosition.Right;
-                    else if (awr.Right == screenRectangle.Right && awr.Left < screenRectangle.Right - leftRightWindowSize) mtp = MoveToPosition.Right;
+                    else if (Math.Abs(awr.Right - screenRectangle.Right) < pixelError && awr.Left < screenRectangle.Right - leftRightWindowSize) mtp = MoveToPosition.Right;
                     else /* if (awr.Right == screeRectangle.Right && awr.Left >= screenRectangle.Right - leftRightWindowSize) */ mtp = MoveToPosition.Left; // cycle around to other side
                 }
                 else /* (screenPostions == ScreenPositions.OneThirdAndTwoThirds) */
@@ -358,8 +359,9 @@ namespace SystrayComponent
                     if (awr.Right + pixelError < screenRectangle.Right - centerWindowSize - leftRightWindowSize) mtp = MoveToPosition.Left;
                     else if (Math.Abs(awr.Right - (screenRectangle.Right - leftRightWindowSize - centerWindowSize)) < pixelError && awr.Left >= screenRectangle.Left) mtp = MoveToPosition.LeftTwoThirds;
                     else if (awr.Right < screenRectangle.Right - centerWindowSize) mtp = MoveToPosition.RightTwoThirds;
-                    else if (awr.Right <= screenRectangle.Right - leftRightWindowSize && awr.Left < screenRectangle.Left + leftRightWindowSize + centerWindowSize) mtp = MoveToPosition.RightTwoThirds;
-                    //else if (awr.Right == screenRectangle.Right - leftRightWindowSize && awr.Left >= screenRectangle.Left + leftRightWindowSize + centerWindowSize) mtp = MoveToPosition.Right;
+                    else if (awr.Right < screenRectangle.Right && awr.Left <= screenRectangle.Left + leftRightWindowSize) mtp = MoveToPosition.RightTwoThirds;
+                    else if (awr.Right <= screenRectangle.Right && awr.Left >= screenRectangle.Left + leftRightWindowSize + centerWindowSize && 
+                        Math.Abs(awr.Left - (screenRectangle.Left + leftRightWindowSize + centerWindowSize)) > pixelError) mtp = MoveToPosition.Right;
                     else if (awr.Right < screenRectangle.Right) mtp = MoveToPosition.Right;
                     else if (awr.Right == screenRectangle.Right && awr.Left < screenRectangle.Right - leftRightWindowSize) mtp = MoveToPosition.Right;
                     else /* if (awr.Right == screeRectangle.Right && awr.Left >= screenRectangle.Right - leftRightWindowSize) */ mtp = MoveToPosition.Left; // cycle around to other side

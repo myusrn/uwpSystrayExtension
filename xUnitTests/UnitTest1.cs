@@ -27,7 +27,7 @@ namespace xUnitTests
         {
             var paw = new PositionActiveWindow();
             var awr = paw.GetActiveWindowRectangle();
-            Assert.NotNull(awr.Left);
+            Assert.IsType<int>(awr.Left);
         }
 
         [Fact]

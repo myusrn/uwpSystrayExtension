@@ -66,7 +66,9 @@ namespace SystrayComponent
         /// <summary>
         /// Track whether or now we have a left/right shiftkey down event in effect
         /// </summary>
+        #pragma warning disable 414
         bool isShiftKeyDown = false;
+        #pragma warning restore 414
         #endregion
 
         #region Events
