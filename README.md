@@ -21,5 +21,6 @@ Related information: https://github.com/myusrn/uwpSystrayExtension/README.md
 11/16/18 - fixed following issues found to exist with active window positioning keyboard shortcuts
 1. when in alt+c[enter] state ctrl+leftarrow correctly moves to left 2/3rds but ctrl+rightarrow moves to right 1/3rd not 2/3rds
 2. when in win+leftarrow state ctrl+rightarrow moves to right 2/3rds instead of left 2/3rds and likewise when in win+rightarrow state and enter ctrl+leftarrow
-3. when in alt+shift+c state alt+leftarrow has to be hit twice to move to left 3rd but same isn't true for alt+rightarrow which correctly moves to right 3rd
-4. when in win+leftarrow state alt+leftarrow moves to right 3rd instead of left 3rd and likewise when in win+rightarrow state end enter ctrl+rightarrow
+3. when in alt+shift+c state alt+leftarrow has to be hit twice to move to left 3rd but same isn't true for alt+rightarrow which correctly moves to right 1/3rd
+4. when in win+leftarrow state alt+leftarrow moves to right 1/3rd instead of left 3rd and likewise when in win+rightarrow state end enter ctrl+rightarrow
+5. when in ctrl+leftarrow 1/3rd state ctrl+rightarrow moves to right 2/3rds instead of left 2/3rds and likewise in ctrl+rightarrow 1/3rd state

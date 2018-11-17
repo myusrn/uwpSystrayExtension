@@ -316,7 +316,7 @@ namespace SystrayComponent
         {
             MoveToPosition mtp = MoveToPosition.Undecided;
             var awr = GetActiveWindowRectangle();
-            const int pixelError = 2; // needs 1px on uwqhd 21:9 3440x1440 display and 2px on wqhd 16:9 2560x1440 display
+            const int pixelError = 3; // needs 1px on uwqhd 21:9 3440x1440 display and 2px on wqhd 16:9 2560x1440 display
             if (arrangeDirection == ArrangeDirection.Left)
             {
                 if (screenPostions == ScreenPositions.LeftCenterRight)
