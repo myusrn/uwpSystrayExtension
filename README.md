@@ -18,6 +18,9 @@ I use runFullTrust capability as part of new desktop extensions capability to fa
 Related information: https://github.com/myusrn/uwpSystrayExtension/README.md 
 
 # feature and fix updates
+11/16/18 - made following feature update
+1. updated icon used in systray, aka notfication area, and in legacy windows form usage info view making use of "png to icon free" -> https://convertico.com/ service
+  
 11/16/18 - fixed following issues found to exist with active window positioning keyboard shortcuts
 1. when in alt+c[enter] state ctrl+leftarrow correctly moves to left 2/3rds but ctrl+rightarrow moves to right 1/3rd not 2/3rds
 2. when in win+leftarrow state ctrl+rightarrow moves to right 2/3rds instead of left 2/3rds and likewise when in win+rightarrow state and enter ctrl+leftarrow
