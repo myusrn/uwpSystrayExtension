@@ -316,7 +316,7 @@ namespace SystrayComponent
         {
             MoveToPosition mtp = MoveToPosition.Undecided;
             var awr = GetActiveWindowRectangle();
-// needed 1px on 34" uwqhd 21:9 3440x1440 @ ???%, 2px on 25" wqhd 16:9 2560x1440 @ 125% [ , 3px on 13" wqhd @ 175% scale ] and ease of access [ win+u ] | display | make text bigger = 100% (default)
+// needed 1px on 34" uwqhd 21:9 3440x1440 @ 100%, 2px on 25" wqhd 16:9 2560x1440 @ 125% [ , 3px on 13" wqhd @ 175% scale ] and ease of access [ win+u ] | display | make text bigger = 100% (default)
 // using 3px appeared to break behavior back on 25" display where win+leftarrow state ctrl+leftarrow cycled to right 3rd instead of left 2/3rds and visa versa for starting with win+rightarrow state
             const int pixelError = 2; 
             if (arrangeDirection == ArrangeDirection.Left)
