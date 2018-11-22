@@ -90,9 +90,11 @@ namespace SystrayComponent
         const short SW_SHOW = 5;
         const short SW_RESTORE = 9;
 
+        // https://docs.microsoft.com/en-us/windows/desktop/menurc/wm-syscommand
         const int WM_SYSCOMMAND = 0x0112;
         //const ulong SC_MOVE = 0xF010;
         readonly UIntPtr SC_MOVE = new UIntPtr(0xF010);
+        readonly UIntPtr SC_MAXIMIZE = new UIntPtr(0xF030);
         #endregion
 
         #region Public Methods
@@ -181,6 +183,18 @@ namespace SystrayComponent
                 // short [ / Int16 ] -> ushort [ / UInt16 ]-> int [ / Int32 ] -> uint [ / UInt32 ] -> long -> [ / Int64 ] -> ulong [ / UInt64 ] and float -> double -> decimal
                 //SendMessage(awh, WM_SYSCOMMAND, SC_MOVE, 0); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
                 SendMessage(awh, WM_SYSCOMMAND, SC_MOVE, new IntPtr(0)); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
+            }
+        }
+
+        public void PutActiveWindowsIntoMaximizeState()
+        {   
+            var awh = GetActiveWindowHandle();
+
+            if (awh != IntPtr.Zero /* && !IsWindowInMaximizeState(awh) */)  // only act on active window that is not currently in maximize state where maximizing it makes sense
+            {
+                //SendMessage(awh, WM_SYSCOMMAND, SC_MAXIMIZE, 0); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
+                SendMessage(awh, WM_SYSCOMMAND, SC_MAXIMIZE, new IntPtr(0)); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
+                ShowWindow(awh, SW_MAXIMIZE);
             }
         }
 

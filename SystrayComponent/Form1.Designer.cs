@@ -179,10 +179,10 @@ namespace SystrayComponent
             this.label11.Location = new System.Drawing.Point(35, 378);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(592, 17);
+            this.label11.Size = new System.Drawing.Size(747, 17);
             this.label11.TabIndex = 10;
-            this.label11.Text = "4. Alt+X - exits this application including closing associated systray / notifica" +
-    "tion area process";
+            this.label11.Text = "4. Alt+X - put active window into maximize state vs more verbose out of box Alt+S" +
+    "pace+X keyboard shortcut sequence";
             // 
             // button1
             // 
@@ -332,8 +332,8 @@ namespace SystrayComponent
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "A Few Windows Niceties";

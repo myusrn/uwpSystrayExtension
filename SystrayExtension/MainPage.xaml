@@ -44,9 +44,10 @@
             <TextBlock><Underline>Other Keyboard Shortcuts</Underline></TextBlock>
             <TextBlock>1. Alt+A - shows this "A Few Windows Niceties" [afwn] application usage info dialog</TextBlock>
             <TextBlock>2. Alt+B - swap mouse buttons for use when want to change hands to change up posture</TextBlock>
-            <!--<TextBlock>3. Alt+M - put active window into move mode vs more verbose out of box Alt+Space+M keyboard shortcut sequence</TextBlock>-->
-            <TextBlock>3. Alt+X - exits this application including closing associated systray / notification area process</TextBlock>
-            <TextBlock>4. Alt+Z - hibernate/sleep computer vs more verbose out of box Win+X,U,S keyboard shortcut sequence</TextBlock>
+            <TextBlock>3. Alt+M - put active window into move mode vs more verbose out of box Alt+Space+M keyboard shortcut sequence</TextBlock>
+            <TextBlock>4. Alt+X - put active window into maximize state vs more verbose out of box Alt+Space+X keyboard shortcut sequence</TextBlock>
+            <!--<TextBlock>4. Alt+X - exits this application including closing associated systray / notification area process</TextBlock>-->
+            <TextBlock>5. Alt+Z - hibernate/sleep computer vs more verbose out of box Win+X,U,S keyboard shortcut sequence</TextBlock>
             <TextBlock>To enable win[dows] key on right side of keyboard in lieu of rarely used one, e.g. context menu key on microsoft keyboards and print 
                 screen on lenovo x1 carbon/yoga devices, see <Hyperlink NavigateUri="https://github.com/randyrants/sharpkeys/releases">SharpKeys</Hyperlink> .
             </TextBlock>

@@ -98,7 +98,8 @@ namespace SystrayComponent
             rhw.RegisterCombo(1007, Modifiers.Alt, Keys.A); // Alt+A = show a few windows niceties usage info [ and settings customization ] window
             rhw.RegisterCombo(1008, Modifiers.Alt, Keys.B); // Alt+B = swap mouse buttons
             rhw.RegisterCombo(1009, Modifiers.Alt, Keys.M); // Alt+M = put active window into move mode vs oob Alt+Space+M sequence
-            rhw.RegisterCombo(1010, Modifiers.Alt, Keys.X); // Alt+X = exit this application including closing systray/notification area process 
+            rhw.RegisterCombo(1010, Modifiers.Alt, Keys.X); // Alt+X = put active window into maximum state vs oob Alt+Space+X sequence 
+            //rhw.RegisterCombo(1010, Modifiers.Alt, Keys.X); // Alt+X = exit this application including closing systray/notification area process 
             rhw.RegisterCombo(1011, Modifiers.Alt, Keys.Z); // Alt+Z = hibernate/sleep computer, given vs17 Alt+H[elp] and Alt+[Te]S[t] existing assignments, vs oob Win+X,U,S sequence
 
             paw = new PositionActiveWindow(); smb = new SwapMouseButtons();
@@ -212,14 +213,15 @@ namespace SystrayComponent
                 else smb.SetMouseButtonsSetting(MouseButtonsSetting.RightHanded);
                 hotkeyInProgress = false;
             }
-            else if (id == 1009)
+            else if (id == 1009) // put active window into move mode
             {
                 paw.PutActiveWindowsIntoMoveMode();
                 hotkeyInProgress = false;
             }
-            else if (id == 1010) // exit this application including closing systray/notification area process 
+            else if (id == 1010) // put active window into maximum state <- exit this application including closing systray/notification area process 
             {
-                this.Exit(this, null);
+                paw.PutActiveWindowsIntoMaximizeState();
+                //this.Exit(this, null);
                 hotkeyInProgress = false;
             }
             else if (id == 1011) // initiate modern standby hibernate/sleep vs legacy [s3] suspend
