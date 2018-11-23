@@ -98,8 +98,8 @@ namespace SystrayComponent
             rhw.RegisterCombo(1007, Modifiers.Alt, Keys.A); // Alt+A = show a few windows niceties usage info [ and settings customization ] window
             rhw.RegisterCombo(1008, Modifiers.Alt, Keys.B); // Alt+B = swap mouse buttons
             rhw.RegisterCombo(1009, Modifiers.Alt, Keys.M); // Alt+M = put active window into move mode vs oob Alt+Space+M sequence
-            rhw.RegisterCombo(1010, Modifiers.Alt, Keys.X); // Alt+X = toggle active window between maximum and normal state vs oob Alt+Space+X/R sequence 
-            //rhw.RegisterCombo(1010, Modifiers.Alt, Keys.X); // Alt+X = exit this application including closing systray/notification area process 
+            rhw.RegisterCombo(1010, Modifiers.Alt, Keys.X); // Alt+X = toggle active window between maximum and normal state vs oob Alt+Space+X/R sequence which stomps on existing edge settings and more shortcut
+            //rhw.RegisterCombo(1010, Modifiers.Alt, Keys.X); // Alt+X = exit this application including closing systray/notification area process which stomps on existing edge settings and more shortcut
             rhw.RegisterCombo(1011, Modifiers.Alt, Keys.Z); // Alt+Z = hibernate/sleep computer, given vs17 Alt+H[elp] and Alt+[Te]S[t] existing assignments, vs oob Win+X,U,S sequence
 
             paw = new PositionActiveWindow(); smb = new SwapMouseButtons();
