@@ -179,10 +179,10 @@ namespace SystrayComponent
             this.label11.Location = new System.Drawing.Point(35, 378);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(747, 17);
+            this.label11.Size = new System.Drawing.Size(763, 17);
             this.label11.TabIndex = 10;
-            this.label11.Text = "4. Alt+X - put active window into maximize state vs more verbose out of box Alt+S" +
-    "pace+X keyboard shortcut sequence";
+            this.label11.Text = "4. Alt+X - toggle active window between maximize and normal state vs more verbose" +
+    " out of box Alt+Space+X/R shortcuts";
             // 
             // button1
             // 

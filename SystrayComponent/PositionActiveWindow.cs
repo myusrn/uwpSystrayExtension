@@ -152,6 +152,18 @@ namespace SystrayComponent
             return screenRectangle;
         }
 
+        public bool IsWindowInMaximizeState(IntPtr windowHandle)
+        {
+            var swState = SW_HIDE;
+            if (!IsWindowVisible(windowHandle)) swState = SW_HIDE;
+            else if (IsIconic(windowHandle)) swState = SW_MINIMIZE;
+            else if (IsZoomed(windowHandle)) swState = SW_MAXIMIZE;
+            else swState = SW_SHOW; // not hidden, minimized or maximized so a normal visible window that could be SW_SHOW, _SHOWNA, _RESTORE, etc
+
+            if (swState != SW_MAXIMIZE) return false;
+            else return true;
+        }
+
         public bool IsWindowInNormalState(IntPtr windowHandle)
         {
             var swState = SW_HIDE;
@@ -166,7 +178,7 @@ namespace SystrayComponent
 
         public void PutWindowIntoNormalState(IntPtr windowHandle)
         {
-            if (!IsWindowInNormalState(windowHandle)) ShowWindow(windowHandle, SW_RESTORE);
+            ShowWindow(windowHandle, SW_RESTORE);
         }
 
         public void PutActiveWindowsIntoMoveMode()
@@ -174,7 +186,7 @@ namespace SystrayComponent
             var awh = GetActiveWindowHandle();
 
             // change window to normal state if currently hidden, minimized or maximized state where enabling move operation makes no sense 
-            //PutWindowIntoNormalState(awh);
+            //if (!IsWindowInNormalState(awh)) PutWindowIntoNormalState(awh);
 
             if (awh != IntPtr.Zero && IsWindowInNormalState(awh))  // only act on active window that is currently in normal state where enabling move operation makes sense
             {
@@ -186,15 +198,21 @@ namespace SystrayComponent
             }
         }
 
-        public void PutActiveWindowsIntoMaximizeState()
+        public void ToggleActiveWindowsBetweenMaximizeNormalState()
         {   
             var awh = GetActiveWindowHandle();
 
-            if (awh != IntPtr.Zero /* && !IsWindowInMaximizeState(awh) */)  // only act on active window that is not currently in maximize state where maximizing it makes sense
+            if (awh != IntPtr.Zero && !IsWindowInMaximizeState(awh))  // only act on active window that is not currently in maximize state where maximizing it makes sense
             {
                 //SendMessage(awh, WM_SYSCOMMAND, SC_MAXIMIZE, 0); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
-                SendMessage(awh, WM_SYSCOMMAND, SC_MAXIMIZE, new IntPtr(0)); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
+                //SendMessage(awh, WM_SYSCOMMAND, SC_MAXIMIZE, new IntPtr(0)); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
                 ShowWindow(awh, SW_MAXIMIZE);
+            }
+            else if (awh != IntPtr.Zero && !IsWindowInNormalState(awh))  // only act on active window that is not currently in normal state where normal/restore it makes sense
+            {
+                //SendMessage(awh, WM_SYSCOMMAND, SW_RESTORE, 0); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
+                //SendMessage(awh, WM_SYSCOMMAND, SW_RESTORE, new IntPtr(0)); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
+                ShowWindow(awh, SW_RESTORE);
             }
         }
 
@@ -269,7 +287,7 @@ namespace SystrayComponent
 // resizing it but with an appx 7px space across top and bottom of window and if you minimize it and then restore it comes back as
 // SW_MAXIMIZE state not expected SW_SHOW[NORMAL] state. so we check for SW_MAXIMIZE state and change to SW_SHOW[NORMAL] before
 // resizing
-            PutWindowIntoNormalState(awh);
+            /* if (!IsWindowInNormalState(awh)) */ PutWindowIntoNormalState(awh);
 
             var primaryScreen = Screen.PrimaryScreen;
 //#if DEBUG
