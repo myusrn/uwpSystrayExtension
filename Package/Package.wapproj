@@ -75,6 +75,10 @@
     <Content Include="Images\LargeTile.scale-100.png" />
     <Content Include="Images\LargeTile.scale-200.png" />
     <Content Include="Images\LockScreenLogo.scale-200.png" />
+    <Content Include="Images\Screenshot 1.png" />
+    <Content Include="Images\Screenshot 2.png" />
+    <Content Include="Images\Screenshot 3.png" />
+    <Content Include="Images\Screenshot combined.png" />
     <Content Include="Images\SmallTile.scale-100.png" />
     <Content Include="Images\SmallTile.scale-200.png" />
     <Content Include="Images\SplashScreen.scale-100.png" />
