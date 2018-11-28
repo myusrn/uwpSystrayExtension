@@ -5,7 +5,7 @@ Application provides global hotkey, aka keyboard shortcut, behaviors which i fou
 
 It also includes non-window positioning and sizeing related hotkeys such as on for mouse button swapping which i regularly use to keep from getting stuck in mouse hand specific postures during long work sessions. See the app's system tray, aka notification area, "Open Usage Info" context menu option for details on full list of enabled hotkeys.
 
-The Alt+C[enter] and Alt+Shift+[Center] hotkeys i find address making reading easier.  For some science of what happens when you read, that may explain why widescreen reading is pita, see Tim Ferriss' trick for reading two times faster video [ https://www.youtube.com/watch?v=CZU6G8EMUE4 ].  In it he explains how using narrower page widths reduces number of eye refocusing events per line.
+The Alt+C[enter] and Alt+Shift+[Center] hotkeys i find address making reading easier.  For some science of what happens when you read, that may explain why widescreen reading is pita, see [Tim Ferriss' tricks for reading two times faster video](https://www.youtube.com/watch?v=CZU6G8EMUE4).  In it he explains how using narrower page widths reduces number of eye refocusing events per line.
 
 This application makes use of uwp app desktop bridge/extensions support, aka centennial program, to initiate a win32 process that runs in the system tray, aka notification area. This is accomplished via FullTrustProcessLauncher app. The communication between launched win32 app and parent uwp app is done with an in-proc AppService.
 
