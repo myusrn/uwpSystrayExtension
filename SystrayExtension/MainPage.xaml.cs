@@ -34,6 +34,15 @@ namespace SystrayExtension
         {
             base.OnNavigatedTo(e);
 
+            // Package | Package.appxmanifest | Display Name = A Few Windows Niceties [afwn] controls title and can use following for runtime override
+            // Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().Title = "A Few Windows Niceties [afwn] Test";
+
+            // these modifications modify all but the minimize, maximize and close section of title bar -- not sure what to alter to include that section
+            //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar.BackgroundColor = Windows.UI.Colors.Black;
+            //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar.InactiveBackgroundColor = Windows.UI.Colors.Black;
+            //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar.ForegroundColor = Windows.UI.Colors.White;
+            //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar.InactiveForegroundColor = Windows.UI.Colors.White;
+
             //this.Width = 916; this.Height = 662; // overrides Page xaml defined Width="916" Height="662" and read-only ActualWidth/Height values
             // if we set these view properties here in code or in xaml for some reason it breaks page/grid/stackpanel/textblock[@TextWrapping=Wrap] behavior
 

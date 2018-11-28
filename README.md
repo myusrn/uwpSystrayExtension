@@ -1,23 +1,28 @@
-﻿# A Few Windows Niceties (afwn)
+﻿# A Few Windows Niceties (afwn) 
+11/27/2018
 
-Application provides global hotkey, aka keyboard shortcut, behaviors which i found myself constantly wanting ever since moving to wqhd 16:9 aspect ratio displays and more recently the new ultrawide 21:9 aspect ratio displays. While windows provides Win+LeftArrow and Win+RightArrow for 50/50 and customizable two window layouts I found these didn't address the window positioning scenarios i was commonly want quick easy access to when doing reading and development work on widescreen displays. It also includes keyboard shortcut for mouse button swapping which i regularly use to keep from getting stuck in mouse hand specific postures during long work sessions. See the app's system tray, aka notification area, "Open Usage Info" context menu option for enabled hotkey details.
+Application provides global hotkey, aka keyboard shortcut, behaviors which i found myself wanting ever since moving to wqhd 16:9 aspect ratio displays and even more so with recent use of the new ultrawide 21:9 aspect ratio displays. While windows provides Win+LeftArrow and Win+RightArrow for creating initial 50/50 layout, that can then be dragged to any split you like, I found these didn't address the window positioning scenarios i was commonly wanting quick and easy access to when doing reading and development work on widescreen displays. 
 
-Note: The Alt+C[enter] and Alt+Shift+[Center] hotkeys i find address making reading easier supported by science of what happens when you read covered in Tim Ferriss' trick for reading two times faster video [ https://www.youtube.com/watch?v=CZU6G8EMUE4 ] explaining how using narrower page widths reduces number of eye refocusing events per line.
+It also includes non-window positioning and sizeing related hotkeys such as on for mouse button swapping which i regularly use to keep from getting stuck in mouse hand specific postures during long work sessions. See the app's system tray, aka notification area, "Open Usage Info" context menu option for details on full list of enabled hotkeys.
 
-This application makes use of uwp app desktop extensions support to initiate a win32 process that runs in the system tray, aka notification area. This is accomplished via FullTrustProcessLauncher app. The communication between launched win32 app and parent uwp app is done with an in-proc AppService.
+The Alt+C[enter] and Alt+Shift+[Center] hotkeys i find address making reading easier.  For some science of what happens when you read, that may explain why widescreen reading is pita, see Tim Ferriss' trick for reading two times faster video [ https://www.youtube.com/watch?v=CZU6G8EMUE4 ].  In it he explains how using narrower page widths reduces number of eye refocusing events per line.
 
-submission options
-I use confirmAppClose capability to ensure that system tray, aka notification area, process has been launched that is necessary for functionality that remains in place when uwp app view is no longer directly accessible via task bar icon.  
-I use runFullTrust capability as part of new desktop extensions capability to facilitate launching of a win32 process which is required in this case to register for system tray, aka notification area, exposed process.
+This application makes use of uwp app desktop bridge/extensions support, aka centennial program, to initiate a win32 process that runs in the system tray, aka notification area. This is accomplished via FullTrustProcessLauncher app. The communication between launched win32 app and parent uwp app is done with an in-proc AppService.
+
+On my workstation I just launch the SystrayExtension/win32/SystrayComponent.exe directly, optionally at signin using hkcu\Software\Microsoft\Windows\CurrentVersion\Run registry entry or "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" folder shortcut. It has logic to detect if was started by uwp wrapper app or directly and behave accordingly, e.g. launching uwp or winform based show usage information view. I'm awaiting details on how to be enrolled in centennial program so that store app submission can be accepted. The benefit will be ability to make app accessible through store to be installed and run on IT policy controlled machines where things like fixed whitelist based malware detection software might now allow win32 executable to be launched directly versus from within store app sandbox.  
   
 # Build/Deploy and Run the sample
- - Visual Studio 2017 and the Windows 10 October/Aprial 2018s Update SDK (version 17134/16299)
- - Select UWP Package project as your starting project
+ - Visual Studio 2017 and the Windows 10 October/April 2018s Update SDK (version 17134/16299)
+ - Select Store app Package project as your starting project
  - Press F5 to run!
   
-Related information: https://github.com/myusrn/uwpSystrayExtension/README.md 
+Samples, and comments q&a, that facilitated this work can be found at: https://stefanwick.com/2017/06/24/uwp-app-with-systray-extension/ and https://stefanwick.com/2018/05/15/global-hotkey-registration-in-uwp/.  
+  
+Current screenshots with usage information dialog: [./Package/Images/Screenshot Combined.png](./Package/Images/Screenshot%20combined.png)  
 
-# feature and fix updates
+[comment]: # (![alt text](./Package/Images/Screenshot%20combined.png "Screenshot Combined Image"\))
+
+# Feature and Fix updates
 11/16/18 - made following feature update
 1. updated icon used in systray, aka notfication area, and in legacy windows form usage info view making use of "png to icon free" -> https://convertico.com/ service
   

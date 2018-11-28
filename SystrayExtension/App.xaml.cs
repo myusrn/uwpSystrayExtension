@@ -45,9 +45,6 @@ namespace SystrayExtension
             //Windows.UI.ViewManagement.ApplicationView.PreferredLaunchWindowingMode = Windows.UI.ViewManagement.ApplicationViewWindowingMode.PreferredLaunchViewSize;
             //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(916, 662)); // apparently unnecessary
             // if we set these view properties here in code or in xaml for some reason it breaks page/grid/stackpanel/textblock[@TextWrapping=Wrap] behavior
-
-            // currently Package | Package.appxmanifest | Display Name = A Few Windows Niceties [afwn] but if runtime override is necessary use following
-            // Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().Title = "A Few Windows Niceties [afwn] Test";
         }
 
         private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
