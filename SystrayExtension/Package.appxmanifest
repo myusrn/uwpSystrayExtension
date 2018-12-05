@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap mp desktop rescap">
-  <Identity Name="RobertOBrien.UwpWithSystrayExtension" Publisher="CN=ob1" Version="1.1.0.0" />
-  <mp:PhoneIdentity PhoneProductId="efb95638-9a51-42ae-8dcb-822775aecb46" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10" IgnorableNamespaces="uap mp rescap">
+  <Identity Name="14136RobertOBrien.AFewWindowsNiceties" Publisher="CN=97AB39F5-C8A8-4ED8-A44F-452C1110B98B" Version="1.1.5.0" />
   <Properties>
-    <DisplayName>Uwp with Systray Extension</DisplayName>
+    <DisplayName>A Few Windows Niceties</DisplayName>
     <PublisherDisplayName>Robert O'Brien</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
   </Dependencies>
   <Resources>
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="SystrayExtension.App">
-      <uap:VisualElements DisplayName="Uwp with Systray Extension [uwse]" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="SystrayExtension" BackgroundColor="transparent">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+      <uap:VisualElements DisplayName="A Few Windows Niceties [afwn]" Description="A few windows nicities that i've been asking for in windows insider feedback for a while now." BackgroundColor="transparent" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square310x310Logo" />
@@ -25,13 +25,14 @@
       </uap:VisualElements>
       <Extensions>
         <desktop:Extension Category="windows.fullTrustProcess" Executable="Win32\SystrayComponent.exe" />
+        <!--<desktop:Extension Category="windows.fullTrustProcess" Executable="SystrayComponent\SystrayComponent.exe" />-->
         <uap:Extension Category="windows.appService">
           <uap:AppService Name="SystrayExtensionService" />
         </uap:Extension>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="uwse">
+          <uap:Protocol Name="afwn">
             <uap:Logo>Assets\StoreLogo.png</uap:Logo>
-            <uap:DisplayName>Uwp with Systray Extension</uap:DisplayName>
+            <uap:DisplayName>A Few Windows Niceties</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
       </Extensions>
