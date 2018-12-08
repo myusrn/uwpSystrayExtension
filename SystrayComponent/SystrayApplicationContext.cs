@@ -61,7 +61,7 @@ namespace SystrayComponent
             notifyIcon = new NotifyIcon();
             if (!win32appMode) notifyIcon.DoubleClick += new EventHandler(OpenApp);
             else /* if (win32appMode) */ notifyIcon.DoubleClick += new EventHandler(OpenLegacy);
-            notifyIcon.Icon = SystrayComponent.Properties.Resources.Icon2;
+            notifyIcon.Icon = SystrayComponent.Properties.Resources.Icon1;
 #if DEBUG
             if (!win32appMode) notifyIcon.ContextMenu = new ContextMenu(new MenuItem[]{ openMenuItem, sendMenuItem, legacyMenuItem, exitMenuItem });
 #else

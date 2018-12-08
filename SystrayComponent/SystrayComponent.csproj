@@ -7,7 +7,7 @@
     <ProjectGuid>{7EB81B54-E3D6-4945-B1DE-F75663CC3A7D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SystrayComponent</RootNamespace>
-    <AssemblyName>SystrayComponent</AssemblyName>
+    <AssemblyName>AfwnSystrayComponent</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -70,6 +70,7 @@
     <Compile Include="SystrayApplicationContext.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

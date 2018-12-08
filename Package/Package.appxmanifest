@@ -24,8 +24,8 @@
         <uap:SplashScreen Image="Images\SplashScreen.png" />
       </uap:VisualElements>
       <Extensions>
-        <desktop:Extension Category="windows.fullTrustProcess" Executable="Win32\SystrayComponent.exe" />
-        <!--<desktop:Extension Category="windows.fullTrustProcess" Executable="SystrayComponent\SystrayComponent.exe" />-->
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="Win32\AfwnSystrayComponent.exe" />
+        <!--<desktop:Extension Category="windows.fullTrustProcess" Executable="x64\AfwnSystrayComponent.exe" />-->
         <uap:Extension Category="windows.appService">
           <uap:AppService Name="SystrayExtensionService" />
         </uap:Extension>

@@ -50,7 +50,7 @@ namespace SystrayExtension
 
             //#if DEBUG
             // if launched using uwp store app package, vs desktop extensions launched win32 process, then automatically start systray component and close uwp usage information view
-            //if (Process.GetProcessesByName("systraycomponent") == null) // System.PlatformNotSupportedException: 'Retrieving information about local processes is not supported on this platform.'
+            //if (Process.GetProcessesByName("afwnsystraycomponent") == null) // System.PlatformNotSupportedException: 'Retrieving information about local processes is not supported on this platform.'
             //if (!ApplicationData.Current.LocalSettings.Values.ContainsKey("systrayComponentRunning") || 
             //    Convert.ToBoolean(ApplicationData.Current.LocalSettings.Values["systrayComponentRunning"]) != true)
             //{
