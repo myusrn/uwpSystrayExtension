@@ -1,5 +1,5 @@
 ﻿# A Few Windows Niceties (afwn) 
-11/27/2018
+12/08/18
 
 Application provides global hotkey, aka keyboard shortcut, behaviors which i found myself wanting ever since moving to wqhd 16:9 aspect ratio displays and even more so with recent use of the new ultrawide 21:9 aspect ratio displays. While windows provides Win+LeftArrow and Win+RightArrow for creating initial 50/50 layout, that can then be dragged to any split you like, I found these didn't address the window positioning scenarios i was commonly wanting quick and easy access to when doing reading and development work on widescreen displays. 
 
@@ -23,6 +23,9 @@ Current screenshots with usage information dialog: [./Package/Images/Screenshot 
 [comment]: # (![alt text](./Package/Images/Screenshot%20combined.png "Screenshot Combined Image"\))
 
 # Feature and Fix updates
+12/08/18 - made following updates
+1. updated store app assets using visual assets generator and systray component notification area and usage info form to all derive from same updated source image
+  
 11/16/18 - made following feature update
 1. updated icon used in systray, aka notfication area, and in legacy windows form usage info view making use of "png to icon free" -> https://convertico.com/ service
   
