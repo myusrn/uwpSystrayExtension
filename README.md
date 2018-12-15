@@ -1,5 +1,5 @@
 ﻿# A Few Windows Niceties (afwn) 
-12/08/18
+12/15/18
 
 Application provides global hotkey, aka keyboard shortcut, behaviors which i found myself wanting ever since moving to wqhd 16:9 aspect ratio displays and even more so with recent use of the new ultrawide 21:9 aspect ratio displays. While windows provides Win+LeftArrow and Win+RightArrow for creating initial 50/50 layout, that can then be dragged to any split you like, I found these didn't address the window positioning scenarios i was commonly wanting quick and easy access to when doing reading and development work on widescreen displays. 
 
@@ -9,9 +9,13 @@ The Alt+C[enter] and Alt+Shift+[Center] hotkeys i find address making reading ea
 
 This application makes use of uwp app desktop bridge/extensions support, aka centennial program, to initiate a win32 process that runs in the system tray, aka notification area. This is accomplished via FullTrustProcessLauncher app. The communication between launched win32 app and parent uwp app is done with an in-proc AppService.
 
-The current release should become available in the microsoft store within the next week. The benefit of installing from there is the trusted source and sandbox execution experience.  This allows use on IT policy controlled machines where things like fixed whitelist based malware detection software might block directly executed win32 apps from being run. On my workstation when i want to focus on debugging core behavior i just launch systrayComponent win32 output  directly. It has logic to detect if was started by uwp store app or directly and behave accordingly, e.g. launching uwp or winform based show usage information view.   
-  
-# Build/Deploy and Run the sample
+The current release is available in the microsoft store. The benefit of installing from there is the trusted source and sandbox execution experience.  This allows use on IT policy controlled machines where things like fixed whitelist based malware detection software might block directly executed win32 apps from being run. On my workstation when i want to focus on debugging core behavior i just launch systrayComponent win32 output  directly. It has logic to detect if was started by uwp store app or directly and behave accordingly, e.g. launching uwp or winform based show usage information view.   
+
+# Find, Install and Run from Microsoft Store 
+- for Microsoft Store web listing https://www.microsoft.com/en-us/p/a-few-windows-niceties/9mtw4cj7s276?activetab=pivot%3Aoverviewtab
+- for Microsoft Store app listing search on "A Few Windows Niceties"
+
+# Build, Deploy and Run from Sources
  - Visual Studio 2017 and the Windows 10 October/April 2018s Update SDK (version 17134/16299)
  - Select Store app Package project as your starting project
  - Press F5 to run!
