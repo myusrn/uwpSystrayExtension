@@ -168,10 +168,10 @@ namespace SystrayComponent
             this.label10.Location = new System.Drawing.Point(35, 302);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(526, 17);
+            this.label10.Size = new System.Drawing.Size(788, 17);
             this.label10.TabIndex = 9;
             this.label10.Text = "1. Alt+A - shows this \"A Few Windows Niceties\" [afwn] application usage info dial" +
-    "og";
+    "og [ disabled given common use for accept ]";
             // 
             // label11
             // 

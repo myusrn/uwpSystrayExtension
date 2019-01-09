@@ -95,7 +95,8 @@ namespace SystrayComponent
             //rhw.RegisterCombo(1006, Modifiers.Alt | Modifiers.Shift, Keys.Right); // Alt+Shift+R[ight Arrow] = place active window to right 2/3rd or 3rd
             rhw.RegisterCombo(1005, Modifiers.Control, Keys.Left); // Ctrl+L[eft Arrow] = place active window to left 2/3rd or 3rd which stomps on existing ide move left shortcut
             rhw.RegisterCombo(1006, Modifiers.Control, Keys.Right); // Ctrl+R[ight Arrow] = place active window to right 2/3rd or 3rd which stomps on existing ide move left shortcut
-            rhw.RegisterCombo(1007, Modifiers.Alt, Keys.A); // Alt+A = show a few windows niceties usage info [ and settings customization ] window
+// 28dec18 disabled given common use for accept
+            //rhw.RegisterCombo(1007, Modifiers.Alt, Keys.A); // Alt+A = show a few windows niceties usage info [ and settings customization ] window
             rhw.RegisterCombo(1008, Modifiers.Alt, Keys.B); // Alt+B = swap mouse buttons
             rhw.RegisterCombo(1009, Modifiers.Alt, Keys.M); // Alt+M = put active window into move mode vs oob Alt+Space+M sequence
             rhw.RegisterCombo(1010, Modifiers.Alt, Keys.X); // Alt+X = toggle active window between maximum and normal state vs oob Alt+Space+X/R sequence which stomps on existing edge settings and more shortcut
