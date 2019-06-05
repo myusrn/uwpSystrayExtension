@@ -256,8 +256,8 @@ namespace SystrayComponent
             var position = new Rect() { Left = Convert.ToInt16(sr.Right * leftRightBorder), Top = sr.Top + topBottomBorder /*, 
                 Right = Convert.ToInt16(sr.Right * (1 - leftRightBorder)) - Left, Bottom = sr.Bottom - topBottomBorder - Top */
             };
-            position.Right = Convert.ToInt16(sr.Right * (1 - leftRightBorder)) - position.Left; // change in x not absolution x position
-            position.Bottom = sr.Bottom - topBottomBorder - position.Top; // change in y not absolution y position
+            position.Right = Convert.ToInt16(sr.Right * (1 - leftRightBorder)) - position.Left; // change in x not absolute x position
+            position.Bottom = sr.Bottom - topBottomBorder - position.Top; // change in y not absolute y position
 
             // here is a a couple ways to add/subtract from top/bottom position settings in special app cases or uwp vs desktop app cases
             //var awt = GetActiveWindowTitle();
@@ -268,6 +268,48 @@ namespace SystrayComponent
             SetActiveWindowPosition(position.Left, position.Top, position.Right, position.Bottom);
         }
 
+        /// <summary>
+        /// Take current active window and place it in center percentage of screen height with phone aspect ratio.
+        /// </summary>
+        /// <param name="percentageOfTotalHeight">Percentage of total height to use when centering phone aspect ratio sized window, default is 80.</param>
+        /// <param name="aspectRatio">Aspect ratio to use controlling how wide window will be, default is current generation mobile device 19x9.</param>
+        public void PhoneCenterActiveWindowPosition(int percentageOfTotalHeight = 80, decimal aspectRatio = (decimal)19/9)
+        {
+// if you resize active window that is currently in SW_MAXIMIZE state it ends up not resizing it at all, e.g. in case of chrome, or
+// resizing it but with an appx 7px space across top and bottom of window and if you minimize it and then restore it comes back as
+// SW_MAXIMIZE state not expected SW_SHOW[NORMAL] state. so we check for SW_MAXIMIZE state and change to SW_SHOW[NORMAL] before
+// resizing
+            var awh = GetActiveWindowHandle(); var swState = SW_HIDE;
+            if (!IsWindowVisible(awh)) swState = SW_HIDE;
+            else if (IsIconic(awh)) swState = SW_MINIMIZE;
+            else if (IsZoomed(awh)) swState = SW_MAXIMIZE;
+            else swState = SW_SHOW; // not hidden, minimized or maximized so a normal visible window that could be SW_SHOW, _SHOWNA, _RESTORE, etc
+            if (swState != SW_SHOW) ShowWindow(awh, SW_RESTORE);
+
+            var primaryScreen = Screen.PrimaryScreen;
+//#if DEBUG
+//            var allScreens = Screen.AllScreens; var heightOfTaskbar = primaryScreen.Bounds.Bottom - primaryScreen.WorkingArea.Bottom;
+//#endif
+            //var sr = GetScreenRectangle(); // doesn't account for taskbar which you'd have to hardcode depending on display | scale and layout | size of . . .  + resolution settings
+            var sr = primaryScreen.WorkingArea; // accounts for taskbar
+
+            var topBottomBorderPercent = Convert.ToDecimal(100 - percentageOfTotalHeight) / 2 / 100;
+            var leftRightBorder = Convert.ToInt16((sr.Right - sr.Left - ((sr.Bottom - sr.Top - (2 * topBottomBorderPercent)) / aspectRatio)) / 2);
+            
+            var position = new Rect() { Left = sr.Left + leftRightBorder, Top = Convert.ToInt16(sr.Bottom * topBottomBorderPercent) /*, 
+                Right = sr.Right - leftRightBorder - Left, Bottom = Convert.ToInt16(sr.Top * (1 - topBottomBorder)) - Top */
+            };
+            position.Right = sr.Right - leftRightBorder - position.Left; // change in x not absolute x position            
+            position.Bottom = Convert.ToInt16(sr.Bottom * (1 - topBottomBorderPercent)) - position.Top; // change in y not absolute y position
+
+            // here is a a couple ways to add/subtract from top/bottom position settings in special app cases or uwp vs desktop app cases
+            //var awt = GetActiveWindowTitle();
+            //if (awt.EndsWith("- Special App Case 1") || awt.EndsWith("- Special App Case 2")) position.Bottom += 7;  
+            //var awh = GetActiveWindowHandle(); // this approach throws exceptions in IsUwpApp cases not seen in unit test runs that needs to be debugged
+            //foreach (var process in Process.GetProcesses()) { if (process.MainWindowHandle == awh && process.IsUwpApp()) { position.Bottom += 7; break; } }
+
+            SetActiveWindowPosition(position.Left, position.Top, position.Right, position.Bottom);
+        }
         /// <summary>
         /// Take current active window and place it in left or right 3rd of screen area.
         /// </summary>

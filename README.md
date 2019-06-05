@@ -30,6 +30,10 @@ Current screenshots with usage information dialog: [./Package/Images/Screenshot 
 [comment]: # (![alt text](./Package/Images/Screenshot%20combined.png "Screenshot Combined Image"\))
 
 # Feature and Fix updates
+06/04/18 - made following feature updates
+1. added alt+p[hone] to center active window to 80% of screen height with modern smartphone 19:9 aspect ratio controlling the width
+2. updated appxmanifest, waproj and csproj files to make use of rs5 17763 october 2018 sdk update
+
 12/08/18 - made following updates
 1. updated store app assets using visual assets generator and systray component notification area and usage info form to all derive from same updated source image
   
