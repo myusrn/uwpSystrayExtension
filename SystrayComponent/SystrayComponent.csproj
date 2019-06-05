@@ -100,6 +100,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)SystrayExtension\Win32\"</PostBuildEvent>
+    <PostBuildEvent>if not exist "$(SolutionDir)SystrayExtension\Win32" md "$(SolutionDir)SystrayExtension\Win32"
+copy /y "$(TargetPath)" "$(SolutionDir)SystrayExtension\Win32\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
