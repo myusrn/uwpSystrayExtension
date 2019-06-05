@@ -16,7 +16,10 @@ The current release is available in the microsoft store. The benefit of installi
 - for Microsoft Store app listing search on "A Few Windows Niceties"
 
 # Build, Deploy and Run from Sources
- - Visual Studio 2017 and the Windows 10 October/April 2018s Update SDK (version 17134/16299)
+ - If using Windows 10 May 2019 Update SDK then set SystrayComponent.csproj to use <HintPath>$(MSBuildProgramFiles32)\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd</HintPath>
+ - If using Windows 10 October 2018 Update SDK then set SystrayComponent.csproj to use <HintPath>$(MSBuildProgramFiles32)\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd</HintPath>
+ - When SDK updates come out optionally change current MinVersion settings from 16299 [ == 1709 fall creators / october 2017 update ] and [Max]Version settings= 17763 [ == 1809 october 2018 update ]. 
+ Currently using MinVersion 16299 [ == 1709 fall creators / october 2017 update ] vs and older release to enable MainPage.xaml.cs [System.Diagnostics.]Process.GetCurrentProcess().Id calls.
  - Select Store app Package project as your starting project
  - Press F5 to run!
   
