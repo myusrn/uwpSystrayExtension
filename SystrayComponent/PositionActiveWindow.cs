@@ -269,11 +269,11 @@ namespace SystrayComponent
         }
 
         /// <summary>
-        /// Take current active window and place it in center percentage of screen height with phone aspect ratio.
+        /// Take current active window and place it in center using specified percentage of total screen height and aspect ratio to determine width.
         /// </summary>
-        /// <param name="percentageOfTotalHeight">Percentage of total height to use when centering phone aspect ratio sized window, default is 80.</param>
-        /// <param name="aspectRatio">Aspect ratio to use controlling how wide window will be, default is current generation mobile device 19x9.</param>
-        public void PhoneCenterActiveWindowPosition(int percentageOfTotalHeight = 80, decimal aspectRatio = (decimal)19/9)
+        /// <param name="percentageOfTotalHeight">Percentage of total screen height to use when determining when centering window, default is 80.</param>
+        /// <param name="aspectRatio">Aspect ratio to determine width of centered window after height has been calculated, default is current generation mobile device 19x9.</param>
+        public void CenterActiveWindowPositionHeightAndspectRatio(int percentageOfTotalHeight = 80, decimal aspectRatio = (decimal)19/9)
         {
 // if you resize active window that is currently in SW_MAXIMIZE state it ends up not resizing it at all, e.g. in case of chrome, or
 // resizing it but with an appx 7px space across top and bottom of window and if you minimize it and then restore it comes back as

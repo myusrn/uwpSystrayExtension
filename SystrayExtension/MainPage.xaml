@@ -38,10 +38,11 @@
             <TextBlock>1. Alt+C[enter] active window to 60% [ todo: make size slider configurable 50-70% ]</TextBlock>
             <TextBlock>2. Alt+Shift+C[enter] active window to 40% [ todo: make size slider configurable 30-50% ]</TextBlock>
             <TextBlock>3. Alt+P[hone] center active window to 80% of screen height with 19:9 aspect ratio [ todo: make size slider configurable 70-90% ]</TextBlock>
-            <TextBlock>4. Alt+LeftArrow - position active window to left 3rd of screen [ todo: make size of center 3rd slider configurable 34-36-38-40% ]</TextBlock>
-            <TextBlock>5. Alt+RightArrow - position active window to right 3rd of screen [ todo: make size of center 3rd slider configurable 34-36-38-40% ]</TextBlock>
-            <TextBlock>6. Ctrl+LeftArrow - position active window to left 2/3rd and 3rd of screen [ todo: controlled by hotkey 3 &amp; 4 configuration ]</TextBlock>
-            <TextBlock>7. Ctrl+RightArrow - position active window to right 2/3rd and 3rd of screen [ todo: controlled by hotkey 3 &amp; 4 configuration ]</TextBlock>
+            <TextBlock>4. Alt+T[ablet] center active window to 80% of screen height with 4:3 aspect ratio [ todo: make size slider configurable 70-90% ]</TextBlock>
+            <TextBlock>5. Alt+LeftArrow - position active window to left 3rd of screen [ todo: make size of center 3rd slider configurable 34-36-38-40% ]</TextBlock>
+            <TextBlock>6. Alt+RightArrow - position active window to right 3rd of screen [ todo: make size of center 3rd slider configurable 34-36-38-40% ]</TextBlock>
+            <TextBlock>7. Ctrl+LeftArrow - position active window to left 2/3rd and 3rd of screen [ todo: controlled by hotkey 3 &amp; 4 configuration ]</TextBlock>
+            <TextBlock>8. Ctrl+RightArrow - position active window to right 2/3rd and 3rd of screen [ todo: controlled by hotkey 3 &amp; 4 configuration ]</TextBlock>
             <TextBlock><Underline>Other Keyboard Shortcuts</Underline></TextBlock>
             <TextBlock>1. Alt+A - shows this "A Few Windows Niceties" [afwn] application usage info dialog [ disabled given common use for accept ]</TextBlock>
             <TextBlock>2. Alt+B - swap mouse buttons for use when want to change hands to change up posture</TextBlock>

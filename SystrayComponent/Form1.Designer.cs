@@ -62,6 +62,7 @@ namespace SystrayComponent
             this.button2 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -100,7 +101,7 @@ namespace SystrayComponent
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 115);
+            this.label4.Location = new System.Drawing.Point(35, 112);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(564, 17);
@@ -111,30 +112,30 @@ namespace SystrayComponent
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 174);
+            this.label5.Location = new System.Drawing.Point(35, 196);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(806, 17);
             this.label5.TabIndex = 4;
-            this.label5.Text = "4. Alt+LeftArrow - position active window to left 3rd of screen [ todo: make size" +
+            this.label5.Text = "5. Alt+LeftArrow - position active window to left 3rd of screen [ todo: make size" +
     " of center 3rd slider configurable 34-36-38-40% ]";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 204);
+            this.label6.Location = new System.Drawing.Point(35, 224);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(824, 17);
             this.label6.TabIndex = 5;
-            this.label6.Text = "5. Alt+RightArrow - position active window to right 3rd of screen [ todo: make si" +
+            this.label6.Text = "6. Alt+RightArrow - position active window to right 3rd of screen [ todo: make si" +
     "ze of center 3rd slider configurable 34-36-38-40% ]";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(35, 304);
+            this.label7.Location = new System.Drawing.Point(35, 322);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(173, 17);
@@ -144,7 +145,7 @@ namespace SystrayComponent
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(35, 356);
+            this.label8.Location = new System.Drawing.Point(35, 376);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(566, 17);
@@ -155,7 +156,7 @@ namespace SystrayComponent
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(35, 431);
+            this.label9.Location = new System.Drawing.Point(35, 459);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(662, 17);
@@ -166,7 +167,7 @@ namespace SystrayComponent
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(35, 330);
+            this.label10.Location = new System.Drawing.Point(35, 348);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(788, 17);
@@ -177,7 +178,7 @@ namespace SystrayComponent
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(35, 406);
+            this.label11.Location = new System.Drawing.Point(35, 431);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(763, 17);
@@ -187,7 +188,7 @@ namespace SystrayComponent
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(677, 559);
+            this.button1.Location = new System.Drawing.Point(677, 584);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 29);
@@ -199,7 +200,7 @@ namespace SystrayComponent
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(466, 565);
+            this.linkLabel1.Location = new System.Drawing.Point(466, 590);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(203, 17);
@@ -211,7 +212,7 @@ namespace SystrayComponent
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(35, 472);
+            this.label12.Location = new System.Drawing.Point(35, 497);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(780, 17);
@@ -222,7 +223,7 @@ namespace SystrayComponent
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(36, 498);
+            this.label13.Location = new System.Drawing.Point(36, 523);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(365, 17);
@@ -232,7 +233,7 @@ namespace SystrayComponent
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(393, 498);
+            this.linkLabel2.Location = new System.Drawing.Point(393, 523);
             this.linkLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(77, 17);
@@ -244,7 +245,7 @@ namespace SystrayComponent
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(470, 498);
+            this.label14.Location = new System.Drawing.Point(470, 523);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(12, 17);
@@ -254,28 +255,28 @@ namespace SystrayComponent
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(35, 234);
+            this.label15.Location = new System.Drawing.Point(35, 252);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(763, 17);
             this.label15.TabIndex = 18;
-            this.label15.Text = "6. Ctrl+LeftArrow - position active window to left 2/3rd and 3rd of screen [ todo" +
+            this.label15.Text = "7. Ctrl+LeftArrow - position active window to left 2/3rd and 3rd of screen [ todo" +
     ": controlled by hotkey 3 && 4 configuration ]";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(35, 264);
+            this.label16.Location = new System.Drawing.Point(35, 280);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(781, 17);
             this.label16.TabIndex = 19;
-            this.label16.Text = "7. Ctrl+RightArrow - position active window to right 2/3rd and 3rd of screen [ to" +
+            this.label16.Text = "8. Ctrl+RightArrow - position active window to right 2/3rd and 3rd of screen [ to" +
     "do: controlled by hotkey 3 && 4 configuration ]";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(39, 559);
+            this.button3.Location = new System.Drawing.Point(39, 584);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(227, 29);
@@ -286,7 +287,7 @@ namespace SystrayComponent
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(772, 559);
+            this.button2.Location = new System.Drawing.Point(772, 584);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 29);
@@ -298,7 +299,7 @@ namespace SystrayComponent
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(35, 380);
+            this.label17.Location = new System.Drawing.Point(35, 404);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(732, 17);
@@ -309,7 +310,7 @@ namespace SystrayComponent
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(35, 146);
+            this.label18.Location = new System.Drawing.Point(35, 140);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(815, 17);
@@ -317,11 +318,23 @@ namespace SystrayComponent
             this.label18.Text = "3. Alt+P[hone] center active window to 80% of screen height with 19:9 aspect rati" +
     "o [ todo: make size slider configurable 70-90% ]";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(35, 168);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(806, 17);
+            this.label19.TabIndex = 24;
+            this.label19.Text = "4. Alt+T[ablet] center active window to 80% of screen height with 4:3 aspect rati" +
+    "o [ todo: make size slider configurable 70-90% ]";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 626);
+            this.ClientSize = new System.Drawing.Size(901, 664);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.button2);
@@ -380,6 +393,7 @@ namespace SystrayComponent
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }
 
