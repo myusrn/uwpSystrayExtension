@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.UI.ViewManagement;
@@ -95,6 +96,21 @@ namespace SystrayComponent
         //const ulong SC_MOVE = 0xF010;
         readonly UIntPtr SC_MOVE = new UIntPtr(0xF010);
         readonly UIntPtr SC_MAXIMIZE = new UIntPtr(0xF030);
+
+        // win32 api for minimizing all windows -> https://stackoverflow.com/questions/13942765/minimize-all-open-windows
+        // WPARAM MIN_ALL -> https://stackoverflow.com/questions/785054/minimizing-all-open-windows-in-c-sharp
+        const int WM_COMMAND = 0x0111;
+        readonly UIntPtr MIN_ALL = new UIntPtr(0x01A3); // == 419 decimal
+        readonly UIntPtr MIN_ALL_UNDO = new UIntPtr(0x01A0); // == 416 decimal
+
+        // win32 api virtual key codes https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+        //readonly UIntPtr MOD_ALT = new UIntPtr(0x0001);
+        //readonly UIntPtr MOD_CONTROL = new UIntPtr(0x0002);
+        //readonly UIntPtr MOD_SHIFT = new UIntPtr(0x0004);
+        readonly UIntPtr MOD_WIN = new UIntPtr(0x0008);
+
+        //readonly IntPtr VK_END = new IntPtr(0x0023);
+        readonly IntPtr VK_HOME = new IntPtr(0x0024);
         #endregion
 
         #region Public Methods
@@ -193,8 +209,8 @@ namespace SystrayComponent
                 // https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-sendmessage, https://www.bing.com/search?q=c%23+wparam+lparam ->
                 // https://stackoverflow.com/questions/2515261/what-are-the-definitions-for-lparam-and-wparam and c# types reference summary ->
                 // short [ / Int16 ] -> ushort [ / UInt16 ]-> int [ / Int32 ] -> uint [ / UInt32 ] -> long -> [ / Int64 ] -> ulong [ / UInt64 ] and float -> double -> decimal
-                //SendMessage(awh, WM_SYSCOMMAND, SC_MOVE, 0); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
-                SendMessage(awh, WM_SYSCOMMAND, SC_MOVE, new IntPtr(0)); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
+                //SendMessage(awh, WM_SYSCOMMAND, SC_MOVE, IntPtr.Zero); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
+                SendMessage(awh, WM_SYSCOMMAND, SC_MOVE, IntPtr.Zero); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
             }
         }
 
@@ -204,14 +220,14 @@ namespace SystrayComponent
 
             if (awh != IntPtr.Zero && !IsWindowInMaximizeState(awh))  // only act on active window that is not currently in maximize state where maximizing it makes sense
             {
-                //SendMessage(awh, WM_SYSCOMMAND, SC_MAXIMIZE, 0); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
-                //SendMessage(awh, WM_SYSCOMMAND, SC_MAXIMIZE, new IntPtr(0)); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
+                //SendMessage(awh, WM_SYSCOMMAND, SC_MAXIMIZE, IntPtr.Zero); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
+                //SendMessage(awh, WM_SYSCOMMAND, SC_MAXIMIZE, IntPtr.Zero); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
                 ShowWindow(awh, SW_MAXIMIZE);
             }
             else if (awh != IntPtr.Zero && !IsWindowInNormalState(awh))  // only act on active window that is not currently in normal state where normal/restore it makes sense
             {
-                //SendMessage(awh, WM_SYSCOMMAND, SW_RESTORE, 0); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
-                //SendMessage(awh, WM_SYSCOMMAND, SW_RESTORE, new IntPtr(0)); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
+                //SendMessage(awh, WM_SYSCOMMAND, SW_RESTORE, IntPtr.Zero); // if using signature (IntPtr hWnd, int msg, ulong wParam, long lParam); generates PInvokeStackImbalance upon return
+                //SendMessage(awh, WM_SYSCOMMAND, SW_RESTORE, IntPtr.Zero); // if using signature (IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
                 ShowWindow(awh, SW_RESTORE);
             }
         }
@@ -231,13 +247,24 @@ namespace SystrayComponent
         /// </summary>
         /// <param name="percentageOfTotalWidth">Percentage of total width to use when centering window, default is 60.</param>
         /// <param name="topBottomBorder">Number of pixels to use as border across top and bottom, default is 0.</param>
-        public void CenterActiveWindowPosition(int percentageOfTotalWidth = 60, int topBottomBorder = 0)
+        public void CenterActiveWindowPosition(int percentageOfTotalWidth = 60, int topBottomBorder = 0, bool minimizeAllOtherWindows = false)
         {
 // if you resize active window that is currently in SW_MAXIMIZE state it ends up not resizing it at all, e.g. in case of chrome, or
 // resizing it but with an appx 7px space across top and bottom of window and if you minimize it and then restore it comes back as
 // SW_MAXIMIZE state not expected SW_SHOW[NORMAL] state. so we check for SW_MAXIMIZE state and change to SW_SHOW[NORMAL] before
 // resizing
-            var awh = GetActiveWindowHandle(); var swState = SW_HIDE;
+
+            var awh = GetActiveWindowHandle();
+
+            if (minimizeAllOtherWindows)
+            {
+// minimimize all other windows, relevant if you want to eliminate distractions for creating a focused reading window experience, before ensuring active window is in restored state
+// the do that first and then restore active window before sizing it 
+                //DesktopHideAndRestore(hide: true);  // works but introduces a jarring window minimize, 1sec wait, then restore and resize
+                //MinimizeAllWindowsExceptActiveOne();  // doesn't yet work but is desired solution so uncomment if you can workaround using win32 api pinvoke solution
+            }
+
+            var swState = SW_HIDE;
             if (!IsWindowVisible(awh)) swState = SW_HIDE;
             else if (IsIconic(awh)) swState = SW_MINIMIZE;
             else if (IsZoomed(awh)) swState = SW_MAXIMIZE;
@@ -272,8 +299,8 @@ namespace SystrayComponent
         /// Take current active window and place it in center using specified percentage of total screen height and aspect ratio to determine width.
         /// </summary>
         /// <param name="percentageOfTotalHeight">Percentage of total screen height to use when determining when centering window, default is 80.</param>
-        /// <param name="aspectRatio">Aspect ratio to determine width of centered window after height has been calculated, default is current generation mobile device 19x9.</param>
-        public void CenterActiveWindowPositionHeightAndspectRatio(int percentageOfTotalHeight = 80, decimal aspectRatio = (decimal)19/9)
+        /// <param name="aspectRatio">Aspect ratio to determine width of centered window after height has been calculated, default is current generation mobile device 9x19.</param>
+        public void CenterActiveWindowPositionHeightAndAspectRatio(int percentageOfTotalHeight = 80, decimal aspectRatio = (decimal)9/19)
         {
 // if you resize active window that is currently in SW_MAXIMIZE state it ends up not resizing it at all, e.g. in case of chrome, or
 // resizing it but with an appx 7px space across top and bottom of window and if you minimize it and then restore it comes back as
@@ -294,7 +321,7 @@ namespace SystrayComponent
             var sr = primaryScreen.WorkingArea; // accounts for taskbar
 
             var topBottomBorderPercent = Convert.ToDecimal(100 - percentageOfTotalHeight) / 2 / 100;
-            var leftRightBorder = Convert.ToInt16((sr.Right - sr.Left - ((sr.Bottom - sr.Top - (2 * topBottomBorderPercent)) / aspectRatio)) / 2);
+            var leftRightBorder = Convert.ToInt16((sr.Right - sr.Left - ((sr.Bottom - sr.Top - (2 * topBottomBorderPercent)) * aspectRatio)) / 2);
             
             var position = new Rect() { Left = sr.Left + leftRightBorder, Top = Convert.ToInt16(sr.Bottom * topBottomBorderPercent) /*, 
                 Right = sr.Right - leftRightBorder - Left, Bottom = Convert.ToInt16(sr.Top * (1 - topBottomBorder)) - Top */
@@ -310,6 +337,46 @@ namespace SystrayComponent
 
             SetActiveWindowPosition(position.Left, position.Top, position.Right, position.Bottom);
         }
+
+
+        /// <summary>
+        /// Execute winkey+d[esktop all windows hide and restore] keyboard shortcut not the winkey+m[inimize desktop] keyboard shortcut
+        /// </summary>
+        /// <param name="display"></param>
+        public void DesktopHideAndRestore(bool hide = true)
+        {
+            var stwh = FindWindow("Shell_TrayWnd", null);
+            if (hide) /* var res = */ SendMessage(stwh, WM_COMMAND, MIN_ALL, IntPtr.Zero);
+            else /* var res = */ SendMessage(stwh, WM_COMMAND, MIN_ALL_UNDO, IntPtr.Zero);
+            Thread.Sleep(1000); // introduce a 1000ms sleep to allow minimize desktop processing to complete before any subsequent window restore and sizing commands are issued
+        }
+
+        /// <summary>
+        /// Enumerate and minimize all windows except for currently active one, i.e. active window title bar mouse click + shake/wiggle or winkey+home keyboard shortcut
+        /// </summary>
+        public void MinimizeAllWindowsExceptActiveOne()
+        {
+// minimize all windows except the active one -> http://www.zeigen.com/shortcuts/2015/07/16/min-all-except-active/ and
+// https://www.labnol.org/software/minimize-open-windows-quickly/9985/
+// c# sendkeys windows key combination -> c# sendkeys Keys.LWin combination -> 
+// https://stackoverflow.com/questions/10366152/sending-windows-key-using-sendkeys
+// https://stackoverflow.com/questions/12877547/vbscript-sendkeys-ctrllwintab
+// https://stackoverflow.com/questions/48277076/how-to-send-keyboard-combination-shiftwinleft-using-sendkeys-in-c
+// ** https://stackoverflow.com/questions/32077050/sending-a-keypress-to-the-active-window-that-doesnt-handle-windows-message-in-c
+// ** https://stackoverflow.com/questions/15536980/send-keystroke-to-application-in-c-sharp-sendkeys-postmessage-sendmessage-all
+// your post for help https://stackoverflow.com/questions/59278021/using-c-sharp-sendkeys-to-send-winkeyhome-for-minimize-all-windows-except-activ
+// for ctrl use ^ | for winkey use ctrl+esc ^{Esc} | for alt use % | for shift use + 
+            //SendKeys.SendWait("{" + Keys.LWin + "}{" + Keys.Home + "}"); // System.ArgumentException { "Keyword \"LWin\" is not valid." }
+            //SendKeys.SendWait("{" + Keys.RWin + "}{" + Keys.Home + "}"); // System.ArgumentException { "Keyword \"RWin\" is not valid." }
+            //SendKeys.SendWait("{LWin}{Home}"); // System.ArgumentException { "Keyword \"LWin\" is not valid." }
+            //SendKeys.SendWait("^{Esc}{Home}"); // launches start menu as if just winkey was pressed
+            //SendKeys.SendWait("(^{Esc}{Home})"); // launches start menu as if just winkey was pressed and then dismisses it
+            SendKeys.SendWait("^({Esc}{Home})"); // launches start menu as if just winkey was pressed and then dismisses it
+            //SendKeys.SendWait("(^{Esc}){Home}"); // launches start menu as if just winkey was pressed and then dismisses it
+            //SendKeys.SendWait("((^{Esc}){Home})"); // launches start menu as if just winkey was pressed and then dismisses it
+            //SendKeys.SendWait("(^({Esc}{Home}))"); // launches start menu as if just winkey was pressed and then dismisses it
+        }
+
         /// <summary>
         /// Take current active window and place it in left or right 3rd of screen area.
         /// </summary>
@@ -505,7 +572,6 @@ namespace SystrayComponent
 // This is likely because the managed PInvoke signature does not match the unmanaged target signature. 
 // Check that the calling convention and parameters of the PInvoke signature match the target unmanaged signature.
         public static extern IntPtr SendMessage(IntPtr hWnd, int msg, UIntPtr wParam, IntPtr lParam);
-
         #endregion
     }
 }

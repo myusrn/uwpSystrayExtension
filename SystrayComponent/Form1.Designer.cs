@@ -107,7 +107,7 @@ namespace SystrayComponent
             this.label4.Size = new System.Drawing.Size(564, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "2. Alt+Shift+C[enter] active window to 40% [ todo: make size slider configurable " +
-    "30-50% ]";
+    "30-50% ] and minimize all other windows";
             // 
             // label5
             // 
@@ -315,8 +315,8 @@ namespace SystrayComponent
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(815, 17);
             this.label18.TabIndex = 23;
-            this.label18.Text = "3. Alt+P[hone] center active window to 80% of screen height with 19:9 aspect rati" +
-    "o [ todo: make size slider configurable 70-90% ]";
+            this.label18.Text = "3. Alt+P[hone] center active window to 80% of screen height with 9:19 aspect " +
+    "ratio [ todo: make size slider configurable 70-90% ]";
             // 
             // label19
             // 
@@ -326,8 +326,8 @@ namespace SystrayComponent
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(806, 17);
             this.label19.TabIndex = 24;
-            this.label19.Text = "4. Alt+T[ablet] center active window to 80% of screen height with 4:3 aspect rati" +
-    "o [ todo: make size slider configurable 70-90% ]";
+            this.label19.Text = "4. Alt+T[ablet] center active window to 80% of screen height with 4:3 aspect " +
+    "ratio [ todo: make size slider configurable 70-90% ]";
             // 
             // Form1
             // 

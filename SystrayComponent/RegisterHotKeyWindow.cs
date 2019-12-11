@@ -21,7 +21,7 @@ namespace SystrayComponent
     {
         #region Constant, Structure and Delegate Definitions
         const int WM_HOTKEY = 0x0312;
-        const int WM_DESTROY = 0x0002;
+        const int WM_DESTROY = 0x0002;        
 
         public delegate void HotkeyDelegate(int ID);
         #endregion
