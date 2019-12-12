@@ -349,11 +349,12 @@ namespace SystrayComponent
         /// </summary>
         public void MinimizeAllWindowsExceptActiveOne(IntPtr awh)
         {
-// minimize all windows except the active one -> http://www.zeigen.com/shortcuts/2015/07/16/min-all-except-active/ and
-// https://www.labnol.org/software/minimize-open-windows-quickly/9985/
+            // minimize all windows except the active one -> http://www.zeigen.com/shortcuts/2015/07/16/min-all-except-active/ and
+            // https://www.labnol.org/software/minimize-open-windows-quickly/9985/
 
-// win32 api sendinput c# -> https://stackoverflow.com/questions/12761169/send-keys-through-sendinput-in-user32-dll
-// win32 api virtual key codes -> https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes 
+            // win32 api sendinput c# -> https://stackoverflow.com/questions/12761169/send-keys-through-sendinput-in-user32-dll
+            // win32 api virtual key codes -> https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes 
+            //SetActiveWindow(awh); // doesn't appear to make a difference
             SendKeyDown(KeyCode.LWIN);
             SendKeyPress(KeyCode.HOME);
             SendKeyUp(KeyCode.LWIN);
@@ -520,7 +521,14 @@ namespace SystrayComponent
         /// </summary>
         /// <returns>Handle to the active window attached to the calling thread's message queue. Otherwise, the return value is NULL.</returns>
         //[DllImport("user32.dll")]
-        //static extern IntPtr GetActiveWindow();
+        //public static extern IntPtr GetActiveWindow();
+
+        /// <summary>
+        /// Activates a window. The window must be attached to the calling thread's message queue.
+        /// </summary>
+        /// <returns>Handle to the active window attached to the calling thread's message queue. Otherwise, the return value is NULL.</returns>
+        [DllImport("user32.dll", SetLastError=true)]
+        public static extern IntPtr SetActiveWindow(IntPtr hWnd);
 
         /// <summary>
         /// Retrieves a handle to the foreground window (the window with which the user is currently working). 
@@ -537,7 +545,7 @@ namespace SystrayComponent
         /// <param name="count">The maximum number of characters to copy to the buffer, including the null character. If the text exceeds this limit, it is truncated.</param>
         /// <returns>If the function succeeds, the return value is the length, in characters, of the copied string, not including the terminating null character. If the window has no title bar or text, if the title bar is empty, or if the window or control handle is invalid, the return value is zero. To get extended error information, call GetLastError.</returns>
         [DllImport("user32.dll")]
-        static extern int GetWindowText(IntPtr hWnd, StringBuilder stringBuffer, int maxCount);
+        public static extern int GetWindowText(IntPtr hWnd, StringBuilder stringBuffer, int maxCount);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr FindWindow(string className, string windowName);
