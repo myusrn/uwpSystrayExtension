@@ -349,11 +349,11 @@ namespace SystrayComponent
         /// </summary>
         public void MinimizeAllWindowsExceptActiveOne(IntPtr awh)
         {
-            // minimize all windows except the active one -> http://www.zeigen.com/shortcuts/2015/07/16/min-all-except-active/ and
-            // https://www.labnol.org/software/minimize-open-windows-quickly/9985/
+// minimize all windows except the active one -> http://www.zeigen.com/shortcuts/2015/07/16/min-all-except-active/ and
+// https://www.labnol.org/software/minimize-open-windows-quickly/9985/
 
-            // win32 api sendinput c# -> https://stackoverflow.com/questions/12761169/send-keys-through-sendinput-in-user32-dll
-            // win32 api virtual key codes -> https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes 
+// win32 api sendinput c# -> https://stackoverflow.com/questions/12761169/send-keys-through-sendinput-in-user32-dll
+// win32 api virtual key codes -> https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes 
             //SetActiveWindow(awh); // doesn't appear to make a difference
             SendKeyDown(KeyCode.LWIN);
             SendKeyPress(KeyCode.HOME);
