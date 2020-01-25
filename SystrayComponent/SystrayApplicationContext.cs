@@ -90,20 +90,22 @@ namespace SystrayComponent
             rhw.RegisterCombo(1001, Modifiers.Alt, Keys.C); // Alt+C = center active window default/60%
             rhw.RegisterCombo(1002, Modifiers.Alt | Modifiers.Shift, Keys.C); // Alt+Shift+C = center active window 40%
             rhw.RegisterCombo(1003, Modifiers.Alt, Keys.P); // Alt+P = center active window with phone aspect ratio using 80% of height
-            rhw.RegisterCombo(1004, Modifiers.Alt, Keys.T); // Alt+T = center active window with tablet aspect ratio using 80% of height
-            rhw.RegisterCombo(1005, Modifiers.Alt, Keys.Left); // Alt+L[eft Arrow] = place active window to left 3rd which stomps on existing browser previous page behavior
-            rhw.RegisterCombo(1006, Modifiers.Alt, Keys.Right); // Alt+R[ight Arrow] = place active window to right 3rd which stomps on existing browser previous page behavior
-            //rhw.RegisterCombo(1007, Modifiers.Alt | Modifiers.Shift, Keys.Left); // Alt+Shift+L[eft Arrow] = place active window to left 2/3rd or 3rd
-            //rhw.RegisterCombo(1008, Modifiers.Alt | Modifiers.Shift, Keys.Right); // Alt+Shift+R[ight Arrow] = place active window to right 2/3rd or 3rd
-            rhw.RegisterCombo(1007, Modifiers.Control, Keys.Left); // Ctrl+L[eft Arrow] = place active window to left 2/3rd or 3rd which stomps on existing ide move left shortcut
-            rhw.RegisterCombo(1008, Modifiers.Control, Keys.Right); // Ctrl+R[ight Arrow] = place active window to right 2/3rd or 3rd which stomps on existing ide move left shortcut
+            rhw.RegisterCombo(1004, Modifiers.Alt | Modifiers.Shift, Keys.P); // Alt+P = center active window with ios phone aspect ratio using 80% of height
+            rhw.RegisterCombo(1005, Modifiers.Alt, Keys.T); // Alt+T = center active window with tablet aspect ratio using 80% of height
+            rhw.RegisterCombo(1006, Modifiers.Alt | Modifiers.Shift, Keys.T); // Alt+Shift+T = center active window with tablet aspect ratio using 50% of height
+            rhw.RegisterCombo(1007, Modifiers.Alt, Keys.Left); // Alt+L[eft Arrow] = place active window to left 3rd which stomps on existing browser previous page behavior
+            rhw.RegisterCombo(1008, Modifiers.Alt, Keys.Right); // Alt+R[ight Arrow] = place active window to right 3rd which stomps on existing browser previous page behavior
+            //rhw.RegisterCombo(1009, Modifiers.Alt | Modifiers.Shift, Keys.Left); // Alt+Shift+L[eft Arrow] = place active window to left 2/3rd or 3rd
+            //rhw.RegisterCombo(1010, Modifiers.Alt | Modifiers.Shift, Keys.Right); // Alt+Shift+R[ight Arrow] = place active window to right 2/3rd or 3rd
+            rhw.RegisterCombo(1009, Modifiers.Control, Keys.Left); // Ctrl+L[eft Arrow] = place active window to left 2/3rd or 3rd which stomps on existing ide move left shortcut
+            rhw.RegisterCombo(1010, Modifiers.Control, Keys.Right); // Ctrl+R[ight Arrow] = place active window to right 2/3rd or 3rd which stomps on existing ide move left shortcut
 // 28dec18 disabled given common use for accept
-            //rhw.RegisterCombo(1009, Modifiers.Alt, Keys.A); // Alt+A = show a few windows niceties usage info [ and settings customization ] window
-            rhw.RegisterCombo(1010, Modifiers.Alt, Keys.B); // Alt+B = swap mouse buttons
-            rhw.RegisterCombo(1011, Modifiers.Alt, Keys.M); // Alt+M = center active window to mobile 19:9 aspect ratio <- put active window into move mode vs oob Alt+Space+M sequence
-            rhw.RegisterCombo(1012, Modifiers.Alt, Keys.X); // Alt+X = toggle active window between maximum and normal state vs oob Alt+Space+X/R sequence which stomps on existing edge settings and more shortcut
-            //rhw.RegisterCombo(1012, Modifiers.Alt, Keys.X); // Alt+X = exit this application including closing systray/notification area process which stomps on existing edge settings and more shortcut
-            rhw.RegisterCombo(1013, Modifiers.Alt, Keys.Z); // Alt+Z = hibernate/sleep computer, given vs17 Alt+H[elp] and Alt+[Te]S[t] existing assignments, vs oob Win+X,U,S sequence
+            //rhw.RegisterCombo(1011, Modifiers.Alt, Keys.A); // Alt+A = show a few windows niceties usage info [ and settings customization ] window
+            rhw.RegisterCombo(1012, Modifiers.Alt, Keys.B); // Alt+B = swap mouse buttons
+            rhw.RegisterCombo(1013, Modifiers.Alt, Keys.M); // Alt+M = center active window to mobile 19:9 aspect ratio <- put active window into move mode vs oob Alt+Space+M sequence
+            rhw.RegisterCombo(1014, Modifiers.Alt, Keys.X); // Alt+X = toggle active window between maximum and normal state vs oob Alt+Space+X/R sequence which stomps on existing edge settings and more shortcut
+            // or Alt+X = exit this application including closing systray/notification area process which stomps on existing edge settings and more shortcut
+            rhw.RegisterCombo(1015, Modifiers.Alt, Keys.Z); // Alt+Z = hibernate/sleep computer, given vs17 Alt+H[elp] and Alt+[Te]S[t] existing assignments, vs oob Win+X,U,S sequence
 
             paw = new PositionActiveWindow(); smb = new SwapMouseButtons();
         } 
@@ -183,61 +185,71 @@ namespace SystrayComponent
                 paw.CenterActiveWindowPosition(40, minimizeAllOtherWindows: true);
                 hotkeyInProgress = false;
             }
-            else if (id == 1003) // center active window using default 80% height and phone 9/19 aspect ratio parameter settings
+            else if (id == 1003) // center active window using default 80% height and phone 9/19 [ current generation ] aspect ratio parameter settings
             {
                 paw.CenterActiveWindowPositionHeightAndAspectRatio();
                 hotkeyInProgress = false;
             }
-            else if (id == 1004) // center active window using 80% height and tablet 16/9 [ amzn fire ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
+            else if (id == 1004) // center active window using default 80% height and phone 3/4 [ apple ipad portrait ] aspect ratio parameter settings
+            {
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)3/4);
+                hotkeyInProgress = false;
+            }
+            else if (id == 1005) // center active window using 80% height and tablet 16/9 [ amzn fire ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
             {
                 paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)4/3); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
                 hotkeyInProgress = false;
             }
-            else if (id == 1005) // place active window position to left using [34-36-38-]40% for center 3rd
+            else if (id == 1006) // center active window using 50% height and tablet 16/9 [ amzn fire ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
+            {
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(60, (decimal)4/3); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
+                hotkeyInProgress = false;
+            }
+            else if (id == 1007) // place active window position to left using [34-36-38-]40% for center 3rd
             {
                 paw.PlaceActiveWindowPosition(ArrangeDirection.Left, 40);
                 hotkeyInProgress = false;
             }
-            else if (id == 1006) // place active window postion to right using [34-36-38-]40% for center 3rd
+            else if (id == 1008) // place active window postion to right using [34-36-38-]40% for center 3rd
             {
                 paw.PlaceActiveWindowPosition(ArrangeDirection.Right, 40);
                 hotkeyInProgress = false;
             }
-            else if (id == 1007) // place active window position to left using 67-68-69-70% for 2/3rds calculation
+            else if (id == 1009) // place active window position to left using 67-68-69-70% for 2/3rds calculation
             {
                 paw.PlaceActiveWindowPosition(ArrangeDirection.Left, 40, 0, ScreenPositions.OneThirdAndTwoThirds);
                 hotkeyInProgress = false;
             }
-            else if (id == 1008) // place active window position to right using 67-68-69-70% for 2/3rds calculation
+            else if (id == 1010) // place active window position to right using 67-68-69-70% for 2/3rds calculation
             {
                 paw.PlaceActiveWindowPosition(ArrangeDirection.Right, 40, 0, ScreenPositions.OneThirdAndTwoThirds);
                 hotkeyInProgress = false;
             }
-            else if (id == 1009) // launch show usage information [ and customizable settings ] window
+            else if (id == 1011) // launch show usage information [ and customizable settings ] window
             {
                 if (!win32appMode) this.OpenApp(this, null);
                 else this.OpenLegacy(this, null);
                 hotkeyInProgress = false;
             }
-            else if (id == 1010) // swap mouse buttons
+            else if (id == 1012) // swap mouse buttons
             {
                 var currentSetting = smb.GetMouseButtonsSetting();
                 if (currentSetting == MouseButtonsSetting.RightHanded) smb.SetMouseButtonsSetting(MouseButtonsSetting.LeftHanded);
                 else smb.SetMouseButtonsSetting(MouseButtonsSetting.RightHanded);
                 hotkeyInProgress = false;
             }
-            else if (id == 1011) // center active window to mobile 19:9 aspect ratio <- put active window into move mode
+            else if (id == 1013) // center active window to mobile 19:9 aspect ratio <- put active window into move mode
             {
                 paw.PutActiveWindowsIntoMoveMode();
                 hotkeyInProgress = false;
             }
-            else if (id == 1012) // toggle active window between maximum and normal state <- exit this application including closing systray/notification area process 
+            else if (id == 1014) // toggle active window between maximum and normal state <- exit this application including closing systray/notification area process 
             {
                 paw.ToggleActiveWindowsBetweenMaximizeNormalState();
                 //this.Exit(this, null);
                 hotkeyInProgress = false;
             }
-            else if (id == 1013) // initiate modern standby hibernate/sleep vs legacy [s3] suspend
+            else if (id == 1015) // initiate modern standby hibernate/sleep vs legacy [s3] suspend
             {
                 var result = Application.SetSuspendState(PowerState.Suspend, true, false);
                 hotkeyInProgress = false;

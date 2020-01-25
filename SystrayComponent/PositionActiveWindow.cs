@@ -306,8 +306,8 @@ namespace SystrayComponent
             var sr = primaryScreen.WorkingArea; // accounts for taskbar
 
             var topBottomBorderPercent = Convert.ToDecimal(100 - percentageOfTotalHeight) / 2 / 100;
-            var leftRightBorder = Convert.ToInt16((sr.Right - sr.Left - ((sr.Bottom - sr.Top - (2 * topBottomBorderPercent)) * aspectRatio)) / 2);
-            
+            var leftRightBorder = Convert.ToInt16((sr.Right - sr.Left - ((sr.Bottom - sr.Top) * (Convert.ToDecimal(percentageOfTotalHeight) / 100) * aspectRatio)) / 2);
+
             var position = new Rect() { Left = sr.Left + leftRightBorder, Top = Convert.ToInt16(sr.Bottom * topBottomBorderPercent) /*, 
                 Right = sr.Right - leftRightBorder - Left, Bottom = Convert.ToInt16(sr.Top * (1 - topBottomBorder)) - Top */
             };
