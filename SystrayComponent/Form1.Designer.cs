@@ -101,34 +101,34 @@ namespace SystrayComponent
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 112);
+            this.label4.Location = new System.Drawing.Point(36, 282);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(564, 17);
+            this.label4.Size = new System.Drawing.Size(808, 17);
             this.label4.TabIndex = 3;
-            this.label4.Text = "2. Alt+Shift+C[enter] active window to 40% [ todo: make size slider configurable " +
-    "30-50% ] and minimize all other windows";
+            this.label4.Text = "The Alt+C and P, T keyboard shortcuts all have Alt+Shift variants that knock 20% " +
+    "off the active window width and height setting.";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 196);
+            this.label5.Location = new System.Drawing.Point(35, 166);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(806, 17);
             this.label5.TabIndex = 4;
-            this.label5.Text = "5. Alt+LeftArrow - position active window to left 3rd of screen [ todo: make size" +
+            this.label5.Text = "4. Alt+LeftArrow - position active window to left 3rd of screen [ todo: make size" +
     " of center 3rd slider configurable 34-36-38-40% ]";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 224);
+            this.label6.Location = new System.Drawing.Point(35, 194);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(824, 17);
             this.label6.TabIndex = 5;
-            this.label6.Text = "6. Alt+RightArrow - position active window to right 3rd of screen [ todo: make si" +
+            this.label6.Text = "5. Alt+RightArrow - position active window to right 3rd of screen [ todo: make si" +
     "ze of center 3rd slider configurable 34-36-38-40% ]";
             // 
             // label7
@@ -255,23 +255,23 @@ namespace SystrayComponent
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(35, 252);
+            this.label15.Location = new System.Drawing.Point(35, 222);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(763, 17);
             this.label15.TabIndex = 18;
-            this.label15.Text = "7. Ctrl+LeftArrow - position active window to left 2/3rd and 3rd of screen [ todo" +
+            this.label15.Text = "6. Ctrl+LeftArrow - position active window to left 2/3rd and 3rd of screen [ todo" +
     ": controlled by hotkey 3 && 4 configuration ]";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(35, 280);
+            this.label16.Location = new System.Drawing.Point(35, 250);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(781, 17);
             this.label16.TabIndex = 19;
-            this.label16.Text = "8. Ctrl+RightArrow - position active window to right 2/3rd and 3rd of screen [ to" +
+            this.label16.Text = "7. Ctrl+RightArrow - position active window to right 2/3rd and 3rd of screen [ to" +
     "do: controlled by hotkey 3 && 4 configuration ]";
             // 
             // button3
@@ -310,24 +310,24 @@ namespace SystrayComponent
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(35, 140);
+            this.label18.Location = new System.Drawing.Point(35, 110);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(815, 17);
             this.label18.TabIndex = 23;
-            this.label18.Text = "3. Alt+P[hone] center active window to 80% of screen height with 9:19 aspect " +
-    "ratio [ todo: make size slider configurable 60-90% ]";
+            this.label18.Text = "2. Alt+P[hone] center active window to 80% of screen height with 9:19 aspect rati" +
+    "o [ todo: make size slider configurable 60-90% ]";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(35, 168);
+            this.label19.Location = new System.Drawing.Point(35, 138);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(806, 17);
             this.label19.TabIndex = 24;
-            this.label19.Text = "4. Alt+T[ablet] center active window to 80% of screen height with 4:3 aspect " +
-    "ratio [ todo: make size slider configurable 60-90% ]";
+            this.label19.Text = "3. Alt+T[ablet] center active window to 80% of screen height with 4:3 aspect rati" +
+    "o [ todo: make size slider configurable 60-90% ]";
             // 
             // Form1
             // 
