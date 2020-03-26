@@ -192,7 +192,7 @@ namespace SystrayComponent
             }
             else if (id == 1004) // center active window using default 80% height and phone 2/3 [ msft surface portrait ] or 3/4 [ apple ipad portrait ] aspect ratio parameter settings
             {
-                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)3/4);
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)2/3);
                 hotkeyInProgress = false;
             }
             else if (id == 1005) // center active window using 80% height and tablet 16/9 [ amzn fire ] or 16/10 [ ssng gnote ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
