@@ -190,9 +190,9 @@ namespace SystrayComponent
                 paw.CenterActiveWindowPositionHeightAndAspectRatio();
                 hotkeyInProgress = false;
             }
-            else if (id == 1004) // center active window using default 80% height and phone 3/4 [ apple ipad portrait ] aspect ratio parameter settings
+            else if (id == 1004) // center active window using default 80% height and phone 2/3 [ msft surface portrait ] or 3/4 [ apple ipad portrait ] aspect ratio parameter settings
             {
-                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)3/4);
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)2/3);
                 hotkeyInProgress = false;
             }
             else if (id == 1005) // center active window using 80% height and tablet 16/9 [ amzn fire ] or 16/10 [ ssng gnote ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
@@ -202,7 +202,7 @@ namespace SystrayComponent
             }
             else if (id == 1006) // center active window using 50% height and tablet 16/9 [ amzn fire ] or 16/10 [ ssng gnote ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
             {
-                paw.CenterActiveWindowPositionHeightAndAspectRatio(60, (decimal)4/3); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(60, (decimal)3/2); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
                 hotkeyInProgress = false;
             }
             else if (id == 1007) // place active window position to left using [34-36-38-]40% for center 3rd
