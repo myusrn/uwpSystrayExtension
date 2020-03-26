@@ -326,7 +326,7 @@ namespace SystrayComponent
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(806, 17);
             this.label19.TabIndex = 24;
-            this.label19.Text = "3. Alt+T[ablet] center active window to 80% of screen height with 4:3 aspect rati" +
+            this.label19.Text = "3. Alt+T[ablet] center active window to 80% of screen height with 16:9 aspect rati" +
     "o [ todo: make size slider configurable 60-90% ]";
             // 
             // Form1
