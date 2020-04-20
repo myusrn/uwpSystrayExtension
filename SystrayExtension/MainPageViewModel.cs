@@ -35,7 +35,7 @@ namespace SystrayExtension
             set
             {
                 SetProperty(ref altArrowWidth, value);
-                readAndPersistSettings.SetAltcWidth(value);
+                readAndPersistSettings.SetAltArrowWidth(value);
             }
         }
 
@@ -46,7 +46,7 @@ namespace SystrayExtension
             set
             {
                 SetProperty(ref ctrlArrowWidth, value);
-                readAndPersistSettings.SetAltcWidth(value);
+                readAndPersistSettings.SetCtrlArrowWidth(value);
             }
         }
 
