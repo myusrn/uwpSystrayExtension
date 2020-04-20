@@ -406,9 +406,7 @@ namespace SystrayComponent
             //var sr = GetScreenRectangle(); // doesn't account for taskbar which you'd have to hardcode depending on display | scale and layout | size of . . .  + resolution settings
             var sr = primaryScreen.WorkingArea; // accounts for taskbar
 
-            // splitting screen into 3rds is always going to require center 3rd to be rounded up to even number to end up with integer/whole numbers for left and right 3rds
             // option 1
-            //if ((centerPercentageOfTotalWidth % 2) != 0) centerPercentageOfTotalWidth++; // need dividison by 2 to produce even or we get into edge cases with window sizings
             var centerWindowSize = (sr.Right - sr.Left) * centerPercentageOfTotalWidth / 100;
             if ((centerWindowSize % 2) != 0) centerWindowSize++; // need even number or math to process alt/ctrl left/right moves can get stuck
             var leftRightWindowSize = ((sr.Right - sr.Left) - centerWindowSize) / 2;
