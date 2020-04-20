@@ -24,6 +24,8 @@
             <!-- app resource dictionary that can cover style, layout and content localization -->
             <SolidColorBrush x:Key="StackPanelBorderBrushLocalApp1" Color="Red"/>
             <ThemeResource x:Key="StackPanelBorderBrushSystemApp1" ResourceKey="SystemControlBackgroundBaseMediumBrush"/>
+            <!--<local:MainPageViewModel x:Key="MainPageViewModel" />-->
+            <!--<Page DataContext="{StaticResource MainPageViewModel}" -->
         </ResourceDictionary>
     </Application.Resources>
 

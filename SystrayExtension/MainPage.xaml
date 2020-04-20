@@ -15,6 +15,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SystrayExtension"
+    xmlns:xaml="using:Windows.UI.Xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -23,8 +24,11 @@
         <SolidColorBrush x:Key="StackPanelBorderBrushLocalDoc1" Color="Red"/>
         <ThemeResource x:Key="StackPanelBorderBrushSystemDoc1" ResourceKey="SystemControlBackgroundBaseMediumBrush"/>
     </Page.Resources>
+    <Page.DataContext>
+        <local:MainPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
 
-<!--<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">-->
+    <!--<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">-->
     <Grid Style="{StaticResource GridStyle1}">
         <!--<Grid.RowDefinitions><RowDefinition Height="*" /></Grid.RowDefinitions><Grid.ColumnDefinitions><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>-->
         <!--<StackPanel Orientation="Vertical" Margin="10,0,0,20" BorderBrush="Red">-->
@@ -32,17 +36,32 @@
         <!--<StackPanel Orientation="Vertical" Margin="10,0,0,20" BorderBrush="{StaticResource StackPanelBorderBrushLocalApp1}">-->
         <!--<StackPanel Orientation="Vertical" Margin="10,0,0,20" BorderBrush="{ThemeResource StackPanelBorderBrushSystemDoc1}">-->
         <!--<StackPanel Orientation="Vertical" Margin="10,0,0,20" BorderBrush="{ThemeResource StackPanelBorderBrushSystemApp1}">-->
-        <StackPanel Style="{StaticResource StackPanelStyle1}">
+        <StackPanel Style="{StaticResource StackPanelStyle1}" Margin="10,2,0,18">
             <TextBlock FontWeight="Bold" Margin="10,20,0,20">A Few Windows Niceties Usage Info:</TextBlock>
             <TextBlock><Underline>Active Window Resizing Keyboard Shortcuts</Underline></TextBlock>
-            <TextBlock>1. Alt+C[enter] active window to 60% [ todo: make size slider configurable 50-70% ]</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="AltcText">1. Alt+C[enter] active window to 50-70% of screen width</TextBlock>
+                <!--<TextBox x:Name="AltcWidth" Height="{x:Bind AltcText.Height - AltcText.Margin.Bottom}" Width="40" Text="{x:Bind ViewModel.AltcWidth}">
+                    <TextBox.Margin><xaml:Thickness Bottom="{x:Bind AltcText.Margin.Bottom}"/></TextBox.Margin> // no good because Thickness is abstract/struct
+                    <TextBox.Margin><xaml:FrameworkElement.Margin Bottom="{x:Bind AltcText.Margin.Bottom}"/></TextBox.Margin>
+                </TextBox>-->
+                <!--<TextBox x:Name="AltcWidth" local:Margin.Bottom="{x:Bind AltcText.Margin.Bottom}" Height="20" Width="40" Text="{x:Bind ViewModel.AltcWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>-->
+                <TextBox x:Name="AltcWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.AltcWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                <Slider x:Name="AltcWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="50" Maximum="70" SmallChange="5" LargeChange="10" Value="{x:Bind ViewModel.AltcWidth, Mode=TwoWay}" />
+            </StackPanel>
             <TextBlock>2. Alt+P[hone] center active window to 80% of screen height with 9:19 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
             <TextBlock>3. Alt+T[ablet] center active window to 80% of screen height with 16:9 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
-            <TextBlock>4. Alt+LeftArrow - position active window to left 3rd of screen [ todo: make size of center 3rd slider configurable 34-36-38-40% ]</TextBlock>
-            <TextBlock>5. Alt+RightArrow - position active window to right 3rd of screen [ todo: make size of center 3rd slider configurable 34-36-38-40% ]</TextBlock>
-            <TextBlock>6. Ctrl+LeftArrow - position active window to left 2/3rd and 3rd of screen [ todo: controlled by hotkey 3 &amp; 4 configuration ]</TextBlock>
-            <TextBlock>7. Ctrl+RightArrow - position active window to right 2/3rd and 3rd of screen [ todo: controlled by hotkey 3 &amp; 4 configuration ]</TextBlock>
-            <TextBlock>Shift modifier with Alt+C knocks 20% of width, Alt+P uses 2:3 aspect ratio and Alt+T knocks 20% of height and uses 3:2 aspect ratio.</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>4. Alt+Left/RightArrow - position active window to left/right 3rd of screen using 30-40% for center 3rd</TextBlock>
+                <TextBox x:Name="AltArrowWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.AltArrowWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                <Slider x:Name="AltArrowWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="30" Maximum="40" SmallChange="2" LargeChange="4" Value="{x:Bind ViewModel.AltArrowWidth, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>5. Ctrl+Left/RightArrow - position active window to left/right 2/3rd and 3rd of screen using 30-40% for 2/3rd sizing</TextBlock>
+                <TextBox x:Name="CtrlArrowWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                <Slider x:Name="CtrlArrowWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="30" Maximum="40" SmallChange="2" LargeChange="4" Value="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay}" />
+            </StackPanel>
+            <TextBlock>Shift modifier used on Alt+C knocks additional 1/3 off width, on Alt+P uses alternative 2:3 aspect ratio and on Alt+T knocks additional 1/3rd off height and uses alternative 3:2 aspect ratio.</TextBlock>
             <TextBlock><Underline>Other Keyboard Shortcuts</Underline></TextBlock>
             <TextBlock>1. Alt+A - shows this "A Few Windows Niceties" [afwn] application usage info dialog [ disabled given common use for accept ]</TextBlock>
             <TextBlock>2. Alt+B - swap mouse buttons for use when want to change hands to change up posture</TextBlock>

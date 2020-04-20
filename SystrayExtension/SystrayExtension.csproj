@@ -96,17 +96,23 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="MainPageViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConfirmCloseDialog.xaml.cs">
       <DependentUpon>ConfirmCloseDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DialogViewModelBase.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Margin.cs" />
+    <Compile Include="PageViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadAndPersistSettings.cs" />
     <Compile Include="ToastHelper.cs" />
+    <Compile Include="ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Win32\AfwnSystrayComponent.exe" />

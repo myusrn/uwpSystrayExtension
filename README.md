@@ -23,13 +23,20 @@ The current release is available in the microsoft store. The benefit of installi
  - Select Store app Package project as your starting project
  - Press F5 to run!
   
-Samples, and comments q&a, that facilitated this work can be found at: https://stefanwick.com/2017/06/24/uwp-app-with-systray-extension/ and https://stefanwick.com/2018/05/15/global-hotkey-registration-in-uwp/.  
+Samples, and comments q&a, that facilitated this work can be found at: https://stefanwick.com/2017/06/24/uwp-app-with-systray-extension/ 
+https://stefanwick.com/2018/04/06/uwp-with-desktop-extension-part-1/ getting started, part-2 launching with params, part-3 communicating between components, part-4 submitting to the store
+https://stefanwick.com/2018/05/15/global-hotkey-registration-in-uwp/.  
   
 Current screenshots with usage information dialog: [./Package/Images/Screenshot Combined.png](./Package/Images/Screenshot%20combined.png)  
 
 [comment]: # (![alt text](./Package/Images/Screenshot%20combined.png "Screenshot Combined Image"\))
 
 # Feature and Fix updates
+04/19/20 - made following feature updates
+1. enabled textbox and slider control width control for alt+c and alt+shift+c window resizing behavior
+2. enabled textbox and slider control width control for alt+arrow window repositioning and resizing behavior
+3. enabled textbox and slider control width control for ctrl+arrow window repositioning and resizing behavior
+
 06/04/18 - made following feature updates
 1. added alt+p[hone] to center active window to 80% of screen height with modern smartphone 19:9 aspect ratio controlling the width
 2. updated appxmanifest, waproj and csproj files to make use of rs5 17763 october 2018 sdk update

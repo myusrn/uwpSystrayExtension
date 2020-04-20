@@ -54,6 +54,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SystrayExtension\ReadAndPersistSettings.cs">
+      <Link>ReadAndPersistSettings.cs</Link>
+    </Compile>
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

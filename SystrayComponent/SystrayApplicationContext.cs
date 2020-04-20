@@ -19,9 +19,10 @@ using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using System.Diagnostics;
+using SystrayExtension;
 
 namespace SystrayComponent
-{
+{   
     public class SystrayApplicationContext : ApplicationContext
     {
         private bool win32appMode = false;
@@ -39,8 +40,12 @@ namespace SystrayComponent
 
         PositionActiveWindow paw = null; SwapMouseButtons smb = null;
 
-        public SystrayApplicationContext()
+        readonly static IReadAndPersistSettings readAndPersistSettings = new ReadAndPersistSettings();  // singleton initialization pattern
+        //static IReadAndPersistSettings readAndPersistSettings = new ReadAndPersistSettings(); // non-singleton initialization pattern
+
+        public SystrayApplicationContext(/* IReadAndPersistSettings readAndPersistSettings -- if IoC/DI framework were in place */)
         {
+            //this.readAndPersistSettings = readAndPersistSettings;
             try
             {
                 var pkg = Package.Current; /* var pkgId = Package.Current.Id; var pkgIdFn = Package.Current.Id.FamilyName; */
@@ -177,12 +182,12 @@ namespace SystrayComponent
             //#endif
             if (id == 1001) // center active window using default 60% width and 0px top/bottom parameter settings
             {
-                paw.CenterActiveWindowPosition(); 
+                paw.CenterActiveWindowPosition(readAndPersistSettings.GetAltcWidth()); 
                 hotkeyInProgress = false;
             }
             else if (id == 1002) // center active window using 40% width and default 0px top/bottom parameter settings and minimize all other windows
             {
-                paw.CenterActiveWindowPosition(40, minimizeAllOtherWindows: true);
+                paw.CenterActiveWindowPosition(readAndPersistSettings.GetAltcWidth() * 2/3, minimizeAllOtherWindows: true);
                 hotkeyInProgress = false;
             }
             else if (id == 1003) // center active window using default 80% height and phone 9/19 [ current generation ] aspect ratio parameter settings
@@ -205,24 +210,24 @@ namespace SystrayComponent
                 paw.CenterActiveWindowPositionHeightAndAspectRatio(60, (decimal)3/2); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
                 hotkeyInProgress = false;
             }
-            else if (id == 1007) // place active window position to left using [34-36-38-]40% for center 3rd
+            else if (id == 1007) // place active window position to left using 40% for center 3rd
             {
-                paw.PlaceActiveWindowPosition(ArrangeDirection.Left, 40);
+                paw.PlaceActiveWindowPosition(ArrangeDirection.Left, readAndPersistSettings.GetAltArrowWidth());
                 hotkeyInProgress = false;
             }
-            else if (id == 1008) // place active window postion to right using [34-36-38-]40% for center 3rd
+            else if (id == 1008) // place active window postion to right using 40% for center 3rd
             {
-                paw.PlaceActiveWindowPosition(ArrangeDirection.Right, 40);
+                paw.PlaceActiveWindowPosition(ArrangeDirection.Right, readAndPersistSettings.GetAltArrowWidth());
                 hotkeyInProgress = false;
             }
-            else if (id == 1009) // place active window position to left using 67-68-69-70% for 2/3rds calculation
+            else if (id == 1009) // place active window position to left using 40% for 2/3rds calculation
             {
-                paw.PlaceActiveWindowPosition(ArrangeDirection.Left, 40, 0, ScreenPositions.OneThirdAndTwoThirds);
+                paw.PlaceActiveWindowPosition(ArrangeDirection.Left, readAndPersistSettings.GetCtrlArrowWidth(), 0, ScreenPositions.OneThirdAndTwoThirds);
                 hotkeyInProgress = false;
             }
-            else if (id == 1010) // place active window position to right using 67-68-69-70% for 2/3rds calculation
+            else if (id == 1010) // place active window position to right using 40% for 2/3rds calculation
             {
-                paw.PlaceActiveWindowPosition(ArrangeDirection.Right, 40, 0, ScreenPositions.OneThirdAndTwoThirds);
+                paw.PlaceActiveWindowPosition(ArrangeDirection.Right, readAndPersistSettings.GetCtrlArrowWidth(), 0, ScreenPositions.OneThirdAndTwoThirds);
                 hotkeyInProgress = false;
             }
             else if (id == 1011) // launch show usage information [ and customizable settings ] window
