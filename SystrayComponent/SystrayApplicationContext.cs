@@ -220,14 +220,14 @@ namespace SystrayComponent
                 paw.PlaceActiveWindowPosition(ArrangeDirection.Right, readAndPersistSettings.GetAltArrowWidth());
                 hotkeyInProgress = false;
             }
-            else if (id == 1009) // place active window position to left using 40% for 2/3rds calculation
+            else if (id == 1009) // place active window position to left using 60% for 2/3rds calculation
             {
-                paw.PlaceActiveWindowPosition(ArrangeDirection.Left, readAndPersistSettings.GetCtrlArrowWidth(), 0, ScreenPositions.OneThirdAndTwoThirds);
+                paw.PlaceActiveWindowPosition(ArrangeDirection.Left, readAndPersistSettings.GetCtrlArrowWidth() / 2 , 0, ScreenPositions.OneThirdAndTwoThirds);
                 hotkeyInProgress = false;
             }
-            else if (id == 1010) // place active window position to right using 40% for 2/3rds calculation
+            else if (id == 1010) // place active window position to right using 60% for 2/3rds calculation
             {
-                paw.PlaceActiveWindowPosition(ArrangeDirection.Right, readAndPersistSettings.GetCtrlArrowWidth(), 0, ScreenPositions.OneThirdAndTwoThirds);
+                paw.PlaceActiveWindowPosition(ArrangeDirection.Right, readAndPersistSettings.GetCtrlArrowWidth() / 2, 0, ScreenPositions.OneThirdAndTwoThirds);
                 hotkeyInProgress = false;
             }
             else if (id == 1011) // launch show usage information [ and customizable settings ] window

@@ -52,14 +52,14 @@
             <TextBlock>2. Alt+P[hone] center active window to 80% of screen height with 9:19 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
             <TextBlock>3. Alt+T[ablet] center active window to 80% of screen height with 16:9 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
             <StackPanel Orientation="Horizontal">
-                <TextBlock>4. Alt+Left/RightArrow - position active window to left/right 3rd of screen using 30-40% for center 3rd</TextBlock>
+                <TextBlock>4. Alt+Arrow - position active window to left/right 3rd of screen using 30-50% for center 3rd</TextBlock>
                 <TextBox x:Name="AltArrowWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.AltArrowWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
-                <Slider x:Name="AltArrowWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="30" Maximum="40" SmallChange="2" LargeChange="4" Value="{x:Bind ViewModel.AltArrowWidth, Mode=TwoWay}" />
+                <Slider x:Name="AltArrowWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="30" Maximum="50" SmallChange="2" LargeChange="4" Value="{x:Bind ViewModel.AltArrowWidth, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock>5. Ctrl+Left/RightArrow - position active window to left/right 2/3rd and 3rd of screen using 30-40% for 2/3rd sizing</TextBlock>
+                <TextBlock>5. Ctrl+Arrow - position active window to left/right 2/3rd and 3rd of screen using 60-80% for 2/3rd sizing</TextBlock>
                 <TextBox x:Name="CtrlArrowWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
-                <Slider x:Name="CtrlArrowWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="30" Maximum="40" SmallChange="2" LargeChange="4" Value="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay}" />
+                <Slider x:Name="CtrlArrowWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="60" Maximum="80" SmallChange="2" LargeChange="4" Value="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay}" />
             </StackPanel>
             <TextBlock>Shift modifier used on Alt+C knocks additional 1/3 off width, on Alt+P uses alternative 2:3 aspect ratio and on Alt+T knocks additional 1/3rd off height and uses alternative 3:2 aspect ratio.</TextBlock>
             <TextBlock><Underline>Other Keyboard Shortcuts</Underline></TextBlock>

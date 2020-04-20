@@ -21,7 +21,7 @@ namespace SystrayExtension
         const string AltArrowWidthSetting = "AltArrowWidth";
         const int AltArrowWidthDefault = 40;
         const string CtrlArrowWidthSetting = "CtrlArrowWidth";
-        const int CtrlArrowWidthDefault = 40;
+        const int CtrlArrowWidthDefault = 60;
 
         public ReadAndPersistSettings()
         {

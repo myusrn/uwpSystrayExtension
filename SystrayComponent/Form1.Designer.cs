@@ -110,7 +110,7 @@ namespace SystrayComponent
             this.label5.Size = new System.Drawing.Size(727, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "4. Alt+Arrow - position active window to left/right 3rd of screen [ todo: make ce" +
-    "nter 3rd slider configurable 30-40% ]";
+    "nter 3rd slider configurable 30-50% ]";
             // 
             // label7
             // 
@@ -225,7 +225,7 @@ namespace SystrayComponent
             this.label15.Size = new System.Drawing.Size(765, 17);
             this.label15.TabIndex = 18;
             this.label15.Text = "5. Ctrl+Arrow - position active window to left/right 2/3rd and 3rd of screen [ to" +
-    "do: make 2/3rd slider configurable 30-40% ]";
+    "do: make 2/3rd slider configurable 60-80% ]";
             // 
             // button3
             // 

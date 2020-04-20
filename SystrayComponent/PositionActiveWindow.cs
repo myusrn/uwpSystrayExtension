@@ -381,7 +381,7 @@ namespace SystrayComponent
         /// <summary>
         /// Take current active window and place it in left or right 3rd of screen area.
         /// </summary>
-        /// <param name="centerPercentageOfTotalWidth">Percentage of total width to use when moving window, default is 40, with suggested alternatives being 36-38-40.</param>
+        /// <param name="centerPercentageOfTotalWidth">Percentage of total width to use when moving window, default is 40, with suggested alternatives being 30-50.</param>
         /// <param name="topBottomBorder">Number of pixels to use as border across top and bottom, default is 0.</param>
         /// <param name="screenPostions">defines type of screen positions scenario to base action on, default is LeftCenterRight.</param>
         public void PlaceActiveWindowPosition(ArrangeDirection arrangeDirection, int centerPercentageOfTotalWidth = 40, int topBottomBorder = 0, ScreenPositions screenPositions = ScreenPositions.LeftCenterRight)
