@@ -32,10 +32,11 @@ Current screenshots with usage information dialog: [./Package/Images/Screenshot 
 [comment]: # (![alt text](./Package/Images/Screenshot%20combined.png "Screenshot Combined Image"\))
 
 # Feature and Fix updates
-04/19/20 - made following feature updates
+04/19/20 - added following feature updates and issue fixes
 1. enabled textbox and slider control width control for alt+c and alt+shift+c window resizing behavior
 2. enabled textbox and slider control width control for alt+arrow window repositioning and resizing behavior
 3. enabled textbox and slider control width control for ctrl+arrow window repositioning and resizing behavior
+4. fixed alt+arrow and ctrl+arrow actions when defined widths don't produce even screen partitioning sizes
 
 06/04/18 - made following feature updates
 1. added alt+p[hone] to center active window to 80% of screen height with modern smartphone 19:9 aspect ratio controlling the width

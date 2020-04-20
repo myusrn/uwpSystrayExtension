@@ -17,11 +17,11 @@ namespace SystrayExtension
         readonly /* static */ Windows.Storage.ApplicationDataContainer localSettings;// = Windows.Storage.ApplicationData.Current.LocalSettings;
         readonly /* static */ Windows.Storage.StorageFolder localFolder;// = Windows.Storage.ApplicationData.Current.LocalFolder;
         const string AltcWidthSetting = "AltcWidth";
-        const int AltcWidthDefault = 60;
+        const int AltcWidthDefault = 60;  // default 60 and edge case test 50, 55, 65, 70
         const string AltArrowWidthSetting = "AltArrowWidth";
-        const int AltArrowWidthDefault = 40;
+        const int AltArrowWidthDefault = 40;  // default 40 and edge case test 35, 37, 47, 50
         const string CtrlArrowWidthSetting = "CtrlArrowWidth";
-        const int CtrlArrowWidthDefault = 60;
+        const int CtrlArrowWidthDefault = 60;  // default 60 and edge case test 63, 65, 70, 75
 
         public ReadAndPersistSettings()
         {
