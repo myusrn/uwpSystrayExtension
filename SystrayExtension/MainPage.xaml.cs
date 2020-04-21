@@ -48,7 +48,7 @@ namespace SystrayExtension
 
             //octopusMove.Begin();
 
-            //#if DEBUG
+//#if DEBUG
             // if launched using uwp store app package, vs desktop extensions launched win32 process, then automatically start systray component and close uwp usage information view
             //if (Process.GetProcessesByName("afwnsystraycomponent") == null) // System.PlatformNotSupportedException: 'Retrieving information about local processes is not supported on this platform.'
             //if (!ApplicationData.Current.LocalSettings.Values.ContainsKey("systrayComponentRunning") || 
@@ -65,6 +65,16 @@ namespace SystrayExtension
                 //App.Current.Exit(); // the SystemNavigationManager_CloseRequested is only fired for user initiated close gestures such as clicking the X button
             //}
 //#endif
+
+// xaml isfocusengaged -> https://stackoverflow.com/questions/7293761/difference-between-control-focus-and-focusmanager-setfocusedelement
+// uwp xaml setting default control focus -> https://stackoverflow.com/questions/2872238/set-the-focus-on-a-textbox-in-xaml-wpf
+// uwp xaml using focusmanager -> https://stackoverflow.com/questions/59996181/where-is-the-focusmanager-in-a-uwp-xaml-applications
+// https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.focusmanager?view=winrt-18362
+            this.close.Focus(FocusState.Programmatic);
+            //Windows.UI.Xaml.Input.FocusManager.TryFocusAsync(this.close, FocusState.Programmatic); 
+// where TryFocusAsync apparantly replaces depricated SetFocusedElement and before that FocusedElement methods
+// xmlns:xi="using:Windows.UI.Xaml.Input" and xi:FocusManager.TryFocusedElement="{Binding ElementName=close[, FocusState=FocusState.Programmatic ]}"
+// Windows.UI.Xaml.Input.FocusManager.TryFocusedElement="{Binding ElementName=close [, FocusState=FocusState.Programmatic ]}"
         }
 
         private async void SystemNavigationManager_CloseRequested(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)

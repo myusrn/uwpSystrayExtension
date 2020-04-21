@@ -21,7 +21,7 @@ namespace SystrayExtension
         const string AltArrowWidthSetting = "AltArrowWidth";
         const int AltArrowWidthDefault = 40;  // default 40 and edge case test 35, 37, 47, 50
         const string CtrlArrowWidthSetting = "CtrlArrowWidth";
-        const int CtrlArrowWidthDefault = 60;  // default 60 and edge case test 63, 65, 70, 75
+        const int CtrlArrowWidthDefault = 70;  // default 70 and edge case test 63, 65, 70, 75
 
         public ReadAndPersistSettings()
         {
