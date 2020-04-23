@@ -61,7 +61,7 @@
                 <TextBox x:Name="CtrlArrowWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                 <Slider x:Name="CtrlArrowWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="60" Maximum="80" SmallChange="2" LargeChange="5" Value="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay}" />
             </StackPanel>
-            <TextBlock>Shift modifier used on Alt+C knocks additional 30% off width, on Alt+P knocks addtional 10% off height and uses alternative 3:4 aspect ratio 
+            <TextBlock>Shift modifier used on Alt+C knocks additional 30% off width, on Alt+P knocks additional 10% off height and uses alternative 3:4 aspect ratio 
                 and on Alt+T knocks additional 25% off height and uses alternative 3:2 aspect ratio.</TextBlock>
             <TextBlock><Underline>Other Keyboard Shortcuts</Underline></TextBlock>
             <TextBlock>1. Alt+A - shows this "A Few Windows Niceties" [afwn] application usage info dialog [ disabled given common use for accept ]</TextBlock>
