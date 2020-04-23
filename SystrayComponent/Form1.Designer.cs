@@ -98,9 +98,7 @@ namespace SystrayComponent
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(813, 40);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Shift modifier used on Alt+C knocks additional 1/3 off width, on Alt+P uses alter" +
-    "native 2:3 aspect ratio and on Alt+T knocks additional 1/3rd off height and uses" +
-    " alternative 3:2 aspect ratio.";
+            this.label4.Text = resources.GetString("label4.Text");
             // 
             // label5
             // 
@@ -164,7 +162,7 @@ namespace SystrayComponent
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(677, 529);
+            this.button1.Location = new System.Drawing.Point(677, 551);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 30);
@@ -176,7 +174,7 @@ namespace SystrayComponent
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(467, 536);
+            this.linkLabel1.Location = new System.Drawing.Point(467, 558);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(203, 17);
             this.linkLabel1.TabIndex = 13;
@@ -196,15 +194,13 @@ namespace SystrayComponent
             // 
             // linkLabel2
             // 
-            this.linkLabel2.LinkArea = new System.Windows.Forms.LinkArea(178, 187);
+            this.linkLabel2.LinkArea = new System.Windows.Forms.LinkArea(178, 9);
             this.linkLabel2.Location = new System.Drawing.Point(38, 443);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(811, 43);
+            this.linkLabel2.Size = new System.Drawing.Size(811, 81);
             this.linkLabel2.TabIndex = 16;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "To enable win[dows] key on right side of keyboard in lieu of rarely used one, e.g" +
-    ". context menu key on microsoft keyboards and print screen on lenovo x1 carbon/y" +
-    "oga devices, see SharpKeys";
+            this.linkLabel2.Text = resources.GetString("linkLabel2.Text");
             this.linkLabel2.UseCompatibleTextRendering = true;
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
@@ -229,7 +225,7 @@ namespace SystrayComponent
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(39, 529);
+            this.button3.Location = new System.Drawing.Point(39, 551);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(227, 30);
@@ -240,7 +236,7 @@ namespace SystrayComponent
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(772, 529);
+            this.button2.Location = new System.Drawing.Point(772, 551);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 30);
@@ -283,7 +279,7 @@ namespace SystrayComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 590);
+            this.ClientSize = new System.Drawing.Size(901, 619);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);

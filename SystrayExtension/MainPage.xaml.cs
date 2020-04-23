@@ -9,7 +9,6 @@ using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Core.Preview;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -34,21 +33,14 @@ namespace SystrayExtension
         {
             base.OnNavigatedTo(e);
 
-            // Package | Package.appxmanifest | Display Name = A Few Windows Niceties [afwn] controls title and can use following for runtime override
-            // Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().Title = "A Few Windows Niceties [afwn] Test";
-
-            // these modifications modify all but the minimize, maximize and close section of title bar -- not sure what to alter to include that section
-            //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar.BackgroundColor = Windows.UI.Colors.Black;
-            //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar.InactiveBackgroundColor = Windows.UI.Colors.Black;
-            //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar.ForegroundColor = Windows.UI.Colors.White;
-            //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar.InactiveForegroundColor = Windows.UI.Colors.White;
-
-            //this.Width = 916; this.Height = 662; // overrides Page xaml defined Width="916" Height="662" and read-only ActualWidth/Height values
-            // if we set these view properties here in code or in xaml for some reason it breaks page/grid/stackpanel/textblock[@TextWrapping=Wrap] behavior
+            //this.Width = 900; this.Height = 750; // alternative to MainPage.xaml defined Width and Height and read-only ActualWidth/Height values
+            // if we set these view properties here in code or in xaml for it breaks automatic page/grid/stackpanel/textblock[@TextWrapping=Wrap] behavior
+            // also it appears to only control Page/Window canvas area and not the outer Application canvas area which is what we really want to alter
+            // for that see the App.xaml.cs OnLaunched method settings just after Window.Current.Activate()
 
             //octopusMove.Begin();
 
-//#if DEBUG
+            //#if DEBUG
             // if launched using uwp store app package, vs desktop extensions launched win32 process, then automatically start systray component and close uwp usage information view
             //if (Process.GetProcessesByName("afwnsystraycomponent") == null) // System.PlatformNotSupportedException: 'Retrieving information about local processes is not supported on this platform.'
             //if (!ApplicationData.Current.LocalSettings.Values.ContainsKey("systrayComponentRunning") || 
@@ -70,11 +62,12 @@ namespace SystrayExtension
 // uwp xaml setting default control focus -> https://stackoverflow.com/questions/2872238/set-the-focus-on-a-textbox-in-xaml-wpf
 // uwp xaml using focusmanager -> https://stackoverflow.com/questions/59996181/where-is-the-focusmanager-in-a-uwp-xaml-applications
 // https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.focusmanager?view=winrt-18362
+// uwp xaml declarative focus assignment https://stackoverflow.com/questions/61349354/uwp-xaml-declaratively-defining-control-that-has-focus-by-default
             this.close.Focus(FocusState.Programmatic);
-            //Windows.UI.Xaml.Input.FocusManager.TryFocusAsync(this.close, FocusState.Programmatic); 
+            // or Windows.UI.Xaml.Input.FocusManager.TryFocusAsync(this.close, FocusState.Programmatic); 
 // where TryFocusAsync apparantly replaces depricated SetFocusedElement and before that FocusedElement methods
-// xmlns:xi="using:Windows.UI.Xaml.Input" and xi:FocusManager.TryFocusedElement="{Binding ElementName=close[, FocusState=FocusState.Programmatic ]}"
-// Windows.UI.Xaml.Input.FocusManager.TryFocusedElement="{Binding ElementName=close [, FocusState=FocusState.Programmatic ]}"
+// xmlns:xi="using:Windows.UI.Xaml.Input" and xi:FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"
+// or xmlns:xi="using:Windows.UI.Xaml.Input" and xi:FocusManager.FocusedElement="{Binding ElementName=close}"
         }
 
         private async void SystemNavigationManager_CloseRequested(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)

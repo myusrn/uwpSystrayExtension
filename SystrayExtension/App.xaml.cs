@@ -14,8 +14,10 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.AppService;
 using Windows.ApplicationModel.Background;
+using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -144,6 +146,22 @@ namespace SystrayExtension
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
+
+// Package | Package.appxmanifest | Display Name = A Few Windows Niceties [afwn] controls title and can use following for runtime override
+                //ApplicationView.GetForCurrentView().Title = "A Few Windows Niceties [afwn] Test";
+
+// these modifications modify all but the minimize, maximize and close section of title bar -- not sure what to alter to include that section
+                //ApplicationView.GetForCurrentView().TitleBar.BackgroundColor = Windows.UI.Colors.Black;
+                //ApplicationView.GetForCurrentView().TitleBar.InactiveBackgroundColor = Windows.UI.Colors.Black;
+                //ApplicationView.GetForCurrentView().TitleBar.ForegroundColor = Windows.UI.Colors.White;
+                //ApplicationView.GetForCurrentView().TitleBar.InactiveForegroundColor = Windows.UI.Colors.White;
+
+// uwp xaml launch centered https://docs.microsoft.com/answers/questions/8898/resize-center-a-uwp-app-on-launch.html
+                ApplicationView.GetForCurrentView().TryResizeView(new Size(900, 800 /* vs ApplicationView.GetForCurrentView().VisibleBounds.Height */ ));
+                // from above article "there is currently no api to control the display position of applications on the desktop"
+// uwp xaml set app window size -> https://stackoverflow.com/questions/31885979/setting-window-size-on-desktop-for-a-windows-10-uwp-app
+                //ApplicationView.PreferredLaunchViewSize = new Size(900, 800);
+                //ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             }
         }
 
