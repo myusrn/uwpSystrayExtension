@@ -62,7 +62,7 @@
                 <Slider x:Name="CtrlArrowWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="60" Maximum="80" SmallChange="2" LargeChange="5" Value="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay}" />
             </StackPanel>
             <TextBlock>Shift modifier used on Alt+C knocks additional 30% off width, on Alt+P knocks additional 10% off height and uses alternative 3:4 aspect ratio 
-                and on Alt+T knocks additional 25% off height and uses alternative 3:2 aspect ratio.</TextBlock>
+                and on Alt+T knocks additional 10% off height and uses alternative 4:3 aspect ratio.</TextBlock>
             <TextBlock><Underline>Other Keyboard Shortcuts</Underline></TextBlock>
             <TextBlock>1. Alt+A - shows this "A Few Windows Niceties" [afwn] application usage info dialog [ disabled given common use for accept ]</TextBlock>
             <TextBlock>2. Alt+B - swap mouse buttons for use when want to change hands to change up posture</TextBlock>

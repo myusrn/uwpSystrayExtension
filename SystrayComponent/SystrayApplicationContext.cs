@@ -205,9 +205,9 @@ namespace SystrayComponent
                 paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)16/9); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
                 hotkeyInProgress = false;
             }
-            else if (id == 1006) // center active window using 60% height and tablet 16/9 [ amzn fire ] or 16/10 [ ssng gnote ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
+            else if (id == 1006) // center active window using 70% height and tablet 16/9 [ amzn fire ] or 16/10 [ ssng gnote ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
             {
-                paw.CenterActiveWindowPositionHeightAndAspectRatio(80 * 3/4, (decimal)3/2); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(80 * 9/10, (decimal)4/3); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
                 hotkeyInProgress = false;
             }
             else if (id == 1007) // place active window position to left using 40% for center 3rd
