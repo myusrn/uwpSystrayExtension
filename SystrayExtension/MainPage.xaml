@@ -49,7 +49,7 @@
                 <TextBox x:Name="AltcWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.AltcWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                 <Slider x:Name="AltcWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="50" Maximum="70" SmallChange="2" LargeChange="5" Value="{x:Bind ViewModel.AltcWidth, Mode=TwoWay}" />
             </StackPanel>
-            <TextBlock>2. Alt+P[hone] center active window to 80% of screen height with 9:19 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
+            <TextBlock>2. Alt+P[hone] center active window to 80% of screen height with 9:16 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
             <TextBlock>3. Alt+T[ablet] center active window to 80% of screen height with 16:9 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <TextBlock>4. Alt+Arrow - position active window to left/right 3rd of screen using 30-50% for center 3rd</TextBlock>
