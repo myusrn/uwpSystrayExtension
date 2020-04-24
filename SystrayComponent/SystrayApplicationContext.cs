@@ -190,9 +190,9 @@ namespace SystrayComponent
                 paw.CenterActiveWindowPosition(readAndPersistSettings.GetAltcWidth() * 2/3, minimizeAllOtherWindows: true);
                 hotkeyInProgress = false;
             }
-            else if (id == 1003) // center active window using default 80% height and phone 9/19 [ current generation ] aspect ratio parameter settings
+            else if (id == 1003) // center active window using default 80% height and phone 9/19 -> 9/16 [ current generation ] aspect ratio parameter settings
             {
-                paw.CenterActiveWindowPositionHeightAndAspectRatio();
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)9/16);
                 hotkeyInProgress = false;
             }
             else if (id == 1004) // center active window using default 70% height and phone 2/3 [ msft surface portrait ] or 3/4 [ apple ipad portrait ] aspect ratio parameter settings
