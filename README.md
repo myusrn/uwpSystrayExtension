@@ -28,7 +28,8 @@ The current release is available in the microsoft store. The benefit of installi
 - Package | Package.appxmanifest | Packaging | Version | Build increment by 1
 - Change build target to Release | x86 and use Ctrl+F5 to Start Without Debugging to capture updates for Package | Images | Screenshot 1-3.png and paste in OneNote to capture update for [Screenshot Combined.png](./Package/Images/Screenshot%20combined.png)
 - Package | Publish | Create App Packages | how will you distribute = Microsoft Store as &lt;existing published app name&gt; | Neutral Release (ARM64) or x86 Release (x86) | Create
-- (Partner Center Apps and Games)[https://partner.microsoft.com/dashboard/products] | &lt;existing published app name&gt;
+- (Partner Center Apps and Games)[https://partner.microsoft.com/dashboard/products] | &lt;existing published app name&gt; | create new submission | packages | upload Package\bin\Release\ARM64 or x86\&lt;new package build&gt;
+- Wait for it to show as published then visit Microsoft Store and confirm new version is present, installable, and has feature updates and issue fixes in place 
   
 # Samples, and comments q&a, that facilitated this work 
 - https://stefanwick.com/2017/06/24/uwp-app-with-systray-extension/  
