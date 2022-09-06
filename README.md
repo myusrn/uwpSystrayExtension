@@ -23,15 +23,21 @@ The current release is available in the microsoft store. The benefit of installi
 - For Package_StoreAssociation.xml see Package | Publish | Associate App with the Store | Include apps that already have packages = checked | Refresh | &lt;select existing published app entry&gt; | Asssociate -&gt; Package.StoreAssociation.xml and 'create or get uwp store pfx' -&gt; https://stackoverflow.com/questions/42209953/how-to-create-or-get-a-new-storekey-pfx-for-uwp-application   
 - Select store app package project with build configuration Deploy enabled, in this case Package, or Uwp System Tray project, in this case SysTray_Component, and choose 'Set as Startup Project' 
 - Press F5 to Start Debugging or Ctrl+F5 to Start Without Debugging
-  
-Samples, and comments q&a, that facilitated this work can be found at: https://stefanwick.com/2017/06/24/uwp-app-with-systray-extension/   
-https://stefanwick.com/2018/04/06/uwp-with-desktop-extension-part-1/ getting started, part-2 launching with params, part-3 communicating between components, part-4 submitting to the store  
-https://stefanwick.com/2018/05/15/global-hotkey-registration-in-uwp/   
-  
-Current screenshots with usage information dialog: [./Package/Images/Screenshot Combined.png](./Package/Images/Screenshot%20combined.png)  
 
-[comment]: # (![alt text](./Package/Images/Screenshot%20combined.png "Screenshot Combined Image"\))
-
+# Publish new Build to Store
+- Package | Package.appxmanifest | Packaging | Version | Build increment by 1
+- Change build target to Release | x86 and use Ctrl+F5 to Start Without Debugging to capture updates for Package | Images | Screenshot 1-3.png and paste in OneNote to capture update for [Screenshot Combined.png](./Package/Images/Screenshot%20combined.png)
+- Package | Publish | Create App Packages | how will you distribute = Microsoft Store as &lt;existing published app name&gt; | Neutral Release (ARM64) or x86 Release (x86) | Create
+- (Partner Center Apps and Games)[https://partner.microsoft.com/dashboard/products] | &lt;existing published app name&gt;
+  
+# Samples, and comments q&a, that facilitated this work 
+- https://stefanwick.com/2017/06/24/uwp-app-with-systray-extension/  
+- https://stefanwick.com/2018/04/06/uwp-with-desktop-extension-part-1/ getting started, part-2 launching with params, part-3 communicating between components, part-4 submitting to the store  
+- https://stefanwick.com/2018/05/15/global-hotkey-registration-in-uwp/  
+- https://winhelponline.com/blog/clear-customize-notifications-tray-items-windows-7-vista-xp/ outlining how to clear system tray icons of no longer installed applications  
+from admin prompt for %i in ( IconStreams PastIconsStream PromotedIconCache ) do ( reg delete "hkcu\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify" /v %i /f )  
+then from non-admin prompt pskill explorer.exe & explorer.exe to refresh win+i [ settings ] | personalization | taskbar | other system tray icons list  
+  
 # Feature and Fix updates
 09/04/22 - build updates and feature updates
 1. Package | Properties | Package | Target Version updated to current 10.0.22621 [ 22h2 ] from 10.0.17663.0 [ 1809 oct 2018 update ] and Min Version updated to 10.0.17663.0 from 16299.0 [ 1709 fall 2017 creators update ]  

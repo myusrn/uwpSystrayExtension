@@ -82,8 +82,8 @@
             </TextBlock>-->
             <StackPanel Orientation="Horizontal" Margin="10,0,20,20" HorizontalAlignment="Right">
                 <TextBlock VerticalAlignment="Center">optional paypal donations <Hyperlink NavigateUri="https://paypal.me/ob1cot">here</Hyperlink></TextBlock>
-                <Button Name="close" AccessKey="S" Click="close_Click" Margin="10, 0, 0, 20">Minimize to System Tray</Button>
-                <!--<Button Name="exit" AccessKey="i" Click="exit_Click" Margin="10, 0, 0, 20">Exit</Button>--> <!-- irrelevant as close/exit same thing in this case -->
+                <Button Name="close" AccessKey="S" Click="close_Click" Margin="10, 0, 0, 20"><TextBlock Margin="0, 0, 0, 0">Minimize to <Underline>S</Underline>ystem Tray</TextBlock></Button>
+                <!--<Button Name="exit" AccessKey="i" Click="exit_Click" Margin="10, 0, 0, 20"><TextBlock Margin="0, 0, 0, 0">Ex<Underline>i</Underline>t</TextBlock></Button>--> <!-- irrelevant as close/exit same thing in this case -->
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -52,19 +52,21 @@ namespace SystrayComponent
 
         private void button3_Click(object sender, System.EventArgs e)
         {
-//https://www.winhelponline.com/blog/clear-customize-notifications-tray-items-windows-7-vista-xp/
-//reg delete "hkcu\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify" /v IconStreams /f
-//reg delete "hkcu\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify" /v PastIconStream /f [not PromotedIconCache]
-//kill explorer.exe & explorer.exe[which appears to work from non-admin process context but registry key deletions is going to be a problem since uwp blocks that so
+//https://winhelponline.com/blog/clear-customize-notifications-tray-items-windows-7-vista-xp/
+//from admin prompt for %i in ( IconStreams PastIconsStream PromotedIconCache ) do (
+//  reg delete "hkcu\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify" /v %i /f )
+//then from non-admin prompt pskill explorer & explorer to refresh win+i [ settings ] | personalization | taskbar | other system tray icons list
+//can execute from SystrayComponent .net framework winforms app and not SystrayExtension uwp xaml app as it blocks uac permission escalation prompts
             string keyName = @"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify";
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey(keyName, true))
             {
                 if (key != null)
                 {
                     if (key.GetValue("IconStreams") != null) key.DeleteValue("IconStreams");
-                    if (key.GetValue("PastIconStream") != null) key.DeleteValue("PastIconStream");  // typically not present
-                    foreach (var process in Process.GetProcessesByName("explorer")) process.Kill(); // typically only one
-                    //Process.Start("%windir%\\explorer.exe"); // restarted automatically unlike when you kill using command line
+                    if (key.GetValue("PastIconStream") != null) key.DeleteValue("PastIconsStream");
+                    if (key.GetValue("PromotedIconCache") != null) key.DeleteValue("PromotedIconCache");
+                    foreach (var process in Process.GetProcessesByName("explorer")) process.Kill(); // typically only one instance
+                    //Process.Start("%windir%\\explorer.exe"); // restarted automatically unlike when you use pskill on command line
                 }
             }
 
