@@ -87,7 +87,7 @@ namespace SystrayComponent
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(35, 84);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(528, 17);
+            this.label3.Size = new System.Drawing.Size(489, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "1. Alt+C[enter] active window to 60% [ todo: make size slider configurable 50-70%" +
     " ]";
@@ -105,7 +105,7 @@ namespace SystrayComponent
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(35, 166);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(727, 17);
+            this.label5.Size = new System.Drawing.Size(668, 16);
             this.label5.TabIndex = 4;
             this.label5.Text = "4. Alt+Arrow - position active window to left/right 3rd of screen [ todo: make ce" +
     "nter 3rd slider configurable 30-50% ]";
@@ -125,7 +125,7 @@ namespace SystrayComponent
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(35, 323);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(566, 17);
+            this.label8.Size = new System.Drawing.Size(520, 16);
             this.label8.TabIndex = 7;
             this.label8.Text = "2. Alt+B - swap mouse buttons for use when want to change hands to change up post" +
     "ure";
@@ -135,7 +135,7 @@ namespace SystrayComponent
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(35, 405);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(662, 17);
+            this.label9.Size = new System.Drawing.Size(616, 16);
             this.label9.TabIndex = 8;
             this.label9.Text = "5. Alt+Z - hibernate/sleep computer vs more verbose out of box Win+X,U,S keyboard" +
     " shortcut sequence";
@@ -145,7 +145,7 @@ namespace SystrayComponent
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(35, 294);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(788, 17);
+            this.label10.Size = new System.Drawing.Size(743, 16);
             this.label10.TabIndex = 9;
             this.label10.Text = "1. Alt+A - shows this \"A Few Windows Niceties\" [afwn] application usage info dial" +
     "og [ disabled given common use for accept ]";
@@ -155,28 +155,28 @@ namespace SystrayComponent
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(35, 377);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(763, 17);
+            this.label11.Size = new System.Drawing.Size(713, 16);
             this.label11.TabIndex = 10;
             this.label11.Text = "4. Alt+X - toggle active window between maximize and normal state vs more verbose" +
     " out of box Alt+Space+X/R shortcuts";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(677, 551);
+            this.button1.Location = new System.Drawing.Point(593, 551);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 30);
+            this.button1.Size = new System.Drawing.Size(171, 30);
             this.button1.TabIndex = 11;
-            this.button1.Text = "Close";
+            this.button1.Text = "&Minimize To System Tray";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(467, 558);
+            this.linkLabel1.Location = new System.Drawing.Point(392, 558);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(203, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(192, 16);
             this.linkLabel1.TabIndex = 13;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "optional paypal donations here";
@@ -187,7 +187,7 @@ namespace SystrayComponent
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(35, 443);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(780, 17);
+            this.label12.Size = new System.Drawing.Size(730, 16);
             this.label12.TabIndex = 14;
             this.label12.Text = "To enable win[dows] key on right side of keyboard in lieu of rarely used one, e.g" +
     ". context menu key on microsoft keyboards";
@@ -209,7 +209,7 @@ namespace SystrayComponent
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(469, 469);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(12, 17);
+            this.label14.Size = new System.Drawing.Size(10, 16);
             this.label14.TabIndex = 17;
             this.label14.Text = ".";
             // 
@@ -218,7 +218,7 @@ namespace SystrayComponent
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(35, 192);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(765, 17);
+            this.label15.Size = new System.Drawing.Size(702, 16);
             this.label15.TabIndex = 18;
             this.label15.Text = "5. Ctrl+Arrow - position active window to left/right 2/3rd and 3rd of screen [ to" +
     "do: make 2/3rd slider configurable 60-80% ]";
@@ -241,7 +241,7 @@ namespace SystrayComponent
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 30);
             this.button2.TabIndex = 21;
-            this.button2.Text = "Exit";
+            this.button2.Text = "E&xit";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -250,7 +250,7 @@ namespace SystrayComponent
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(35, 350);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(732, 17);
+            this.label17.Size = new System.Drawing.Size(686, 16);
             this.label17.TabIndex = 22;
             this.label17.Text = "3. Alt+M - put active window into move mode vs more verbose out of box Alt+Space+" +
     "M keyboard shortcut sequence";
@@ -260,7 +260,7 @@ namespace SystrayComponent
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(35, 110);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(815, 17);
+            this.label18.Size = new System.Drawing.Size(751, 16);
             this.label18.TabIndex = 23;
             this.label18.Text = "2. Alt+P[hone] center active window to 80% of screen height with 9:16 aspect rati" +
     "o [ todo: make size slider configurable 60-90% ]";
@@ -270,7 +270,7 @@ namespace SystrayComponent
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(35, 138);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(814, 17);
+            this.label19.Size = new System.Drawing.Size(751, 16);
             this.label19.TabIndex = 24;
             this.label19.Text = "3. Alt+T[ablet] center active window to 80% of screen height with 16:9 aspect rat" +
     "io [ todo: make size slider configurable 60-90% ]";

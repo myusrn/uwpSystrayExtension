@@ -74,16 +74,16 @@
                 screen on lenovo x1 carbon/yoga devices, see <Hyperlink NavigateUri="https://github.com/randyrants/sharpkeys/releases">SharpKeys</Hyperlink>.
                 A windows keyboard shortcut that is useful in conjunction with the ones above is Win+Home that will minimize all windows except the 
                 currently active one. If you want to enable this app to automatically start when you signin see win+r | shell:appsfolder for context menu 
-                allowing creation of shortcut that you can then place in %appdata%\Microsoft\Windows\Start Menu\Programs\Startup folder [ todo: provide a 
-                "Start app at Sign In" setting ].
+                allowing creation of shortcut that you can then place in wint+r | shell:startup folder. [ todo: provide a 
+                "Start app at Sign In" setting ]
             </TextBlock>
             <!--<TextBlock>A reminder that there is a poorly advertised win[dows] + home keyboard shortcut that minimizes all other windows except the currently active one.
                 This can be handy for use getting rid of all other windows after executing an Alt-C[enter] or Alt+P[hone] or Alt+T[ablet] active window positioning.
             </TextBlock>-->
             <StackPanel Orientation="Horizontal" Margin="10,0,20,20" HorizontalAlignment="Right">
-                <TextBlock VerticalAlignment="Center">optional paypal donations <Hyperlink NavigateUri="https://www.paypal.me/ob1cot">here</Hyperlink></TextBlock>
-                <Button Name="close" Click="close_Click" Margin="10, 0, 0, 20">Close</Button>
-                <!--<Button Name="exit" Click="exit_Click" Margin="10, 0, 0, 20">Exit</Button>--> <!-- irrelevant as close/exit same thing in this case -->
+                <!--<TextBlock VerticalAlignment="Center">optional paypal donations <Hyperlink NavigateUri="https://www.paypal.me/ob1cot">here</Hyperlink></TextBlock>-->
+                <Button Name="close" AccessKey="m" Click="close_Click" Margin="10, 0, 0, 20">Minimize to System Tray</Button>
+                <!--<Button Name="exit" AccessKey="x" Click="exit_Click" Margin="10, 0, 0, 20">Exit</Button>--> <!-- irrelevant as close/exit same thing in this case -->
             </StackPanel>
         </StackPanel>
     </Grid>
