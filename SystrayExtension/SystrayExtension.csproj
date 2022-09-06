@@ -20,8 +20,8 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateKeyFile>Package_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>61E61FBF01D87BADE895E7015DC30E27C29260F2</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>SystrayExtension_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>C1181868CD9F12AD81F6A935CE067CCA1971F6CF</PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -177,7 +177,7 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Package_TemporaryKey.pfx" />
+    <None Include="SystrayExtension_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
