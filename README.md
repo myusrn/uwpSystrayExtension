@@ -21,7 +21,7 @@ The current release is available in the microsoft store. The benefit of installi
 - In windows enable win+i [ settings ] | privacy & security | for developers | developer mode = off -> on [ which you can turn back off when build, run, debug/test work is done ]
 - For Package_TemporaryKey.pfx [ not password protected ], Package_StorePublishing.pfx [ password protected and persisted in user certificates store ] see Packages | Package.appxmanifest | Packaging | Choose Certificate | Create & How to create package signing certificate -&gt; https://docs.microsoft.com/en-us/windows/msix/package/create-certificate-package-signing and 
 - For Package_StoreAssociation.xml see Package | Publish | Associate App with the Store | Include apps that already have packages = checked | Refresh | &lt;select existing published app entry&gt; | Asssociate -&gt; Package.StoreAssociation.xml and 'create or get uwp store pfx' -&gt; https://stackoverflow.com/questions/42209953/how-to-create-or-get-a-new-storekey-pfx-for-uwp-application   
-- Select store app package project, SystrayExtension (Universal Windows), and choose 'Set as Startup Project'
+- Select store app package project with build configuration Deploy enabled, in this case Package, or Uwp System Tray project, in this case SysTray_Component, and choose 'Set as Startup Project' 
 - Press F5 to Start Debugging or Ctrl+F5 to Start Without Debugging
   
 Samples, and comments q&a, that facilitated this work can be found at: https://stefanwick.com/2017/06/24/uwp-app-with-systray-extension/   

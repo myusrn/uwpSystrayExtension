@@ -81,9 +81,9 @@
                 This can be handy for use getting rid of all other windows after executing an Alt-C[enter] or Alt+P[hone] or Alt+T[ablet] active window positioning.
             </TextBlock>-->
             <StackPanel Orientation="Horizontal" Margin="10,0,20,20" HorizontalAlignment="Right">
-                <!--<TextBlock VerticalAlignment="Center">optional paypal donations <Hyperlink NavigateUri="https://www.paypal.me/ob1cot">here</Hyperlink></TextBlock>-->
-                <Button Name="close" AccessKey="m" Click="close_Click" Margin="10, 0, 0, 20">Minimize to System Tray</Button>
-                <!--<Button Name="exit" AccessKey="x" Click="exit_Click" Margin="10, 0, 0, 20">Exit</Button>--> <!-- irrelevant as close/exit same thing in this case -->
+                <TextBlock VerticalAlignment="Center">optional paypal donations <Hyperlink NavigateUri="https://paypal.me/ob1cot">here</Hyperlink></TextBlock>
+                <Button Name="close" AccessKey="S" Click="close_Click" Margin="10, 0, 0, 20">Minimize to System Tray</Button>
+                <!--<Button Name="exit" AccessKey="i" Click="exit_Click" Margin="10, 0, 0, 20">Exit</Button>--> <!-- irrelevant as close/exit same thing in this case -->
             </StackPanel>
         </StackPanel>
     </Grid>

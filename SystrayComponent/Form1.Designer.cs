@@ -162,19 +162,19 @@ namespace SystrayComponent
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(593, 551);
+            this.button1.Location = new System.Drawing.Point(574, 551);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 30);
+            this.button1.Size = new System.Drawing.Size(190, 30);
             this.button1.TabIndex = 11;
-            this.button1.Text = "&Minimize To System Tray";
+            this.button1.Text = "Minimize To &System Tray";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(392, 558);
+            this.linkLabel1.Location = new System.Drawing.Point(365, 558);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(192, 16);
             this.linkLabel1.TabIndex = 13;
@@ -241,7 +241,7 @@ namespace SystrayComponent
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 30);
             this.button2.TabIndex = 21;
-            this.button2.Text = "E&xit";
+            this.button2.Text = "Ex&it";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
