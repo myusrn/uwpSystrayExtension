@@ -50,7 +50,7 @@ and Package.appxmanifest | open in notepad | TargetDeviceFamily Name="Windows.Un
 and SystrayComponent.csproj Reference Include="Windows" &lt;HintPath&gt;$(MSBuildProgramFiles32)\Windows Kits\10\UnionMetadata\&lt;Facade | 10.0.22621.0&gt;)\Windows.winmd&lt;/HintPath&gt;
 4. xUnitTests project TargetFramework setting update to current net6.0 from netcoreapp2.1
 5. updated text about how to add shortcut to startup folder to use win+r | shell:startup reference instead
-6. changed 'close' button to instead read "minimize to system tray' and enabled alt+m[inimize] keyboard shortcut
+6. changed 'close' button to instead read "minimize to system tray' and enabled alt+s[ystem tray] keyboard shortcut
 7. added window left/right and up/down scroll bars -- todo: look into this next time
   
 04/19/20 - feature updates and issue fixes
