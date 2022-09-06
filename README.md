@@ -28,11 +28,11 @@ how whenever you are having to recreate the Package_TemporaryKey.pfx you need to
 
 # Publish new Build to Store
 - Package | Package.appxmanifest | Packaging | Version | Build increment by 1
-- Change build target to Release | x86 and use Ctrl+F5 to Start Without Debugging to capture updates for Package | Images | Screenshot 1-3.png and paste in OneNote to capture update for [Screenshot Combined.png](./Package/Images/Screenshot%20combined.png)
-- Package | Publish | Create App Packages | how will you distribute = Microsoft Store as &lt;existing published app name&gt; | Neutral Release (ARM64) and/or x86 Release (x86), for help see [Devices and Architectures](https://docs.microsoft.com/en-us/windows/msix/package/device-architecture) + Generate App Bundle = Always | Create | Launch App Certification -&gt; | Passed | Finished
+- Change build target to Release | x86 [ or ARM ] and use Ctrl+F5 to Start Without Debugging to capture updates for Package | Images | Screenshot 1-3.png and paste in OneNote to capture update for [Screenshot Combined.png](./Package/Images/Screenshot%20combined.png)
+- Package | Publish | Create App Packages | how will you distribute = Microsoft Store as &lt;existing published app name&gt; | x86 Release (x86) [ and/or ARM Release (ARM) ], for help see [Devices and Architectures](https://docs.microsoft.com/en-us/windows/msix/package/device-architecture), and Generate App Bundle = Always | Create | Launch App Certification -&gt; | Passed | Finished
 - [Partner Center Apps and Games](https://partner.microsoft.com/dashboard/products) | &lt;existing published app name&gt; | create new submission | packages | upload Package\AppPackages\Package_&lt;version&gt;_&lt;architecture&gt;_bundle.msixbundle | Submit
-- Wait for publish request report showing that it has been accepted then visit Microsoft Store and confirm new version is present, installable, and has feature updates and issue fixes in place 
-  
+- Then use &lt;new submission&gt; | status | view progress to track follow up. Once it shows as having been published visit Microsoft Store and confirm new version is present, installable, and has feature updates and issue fixes in place.  
+    
 # Samples, and comments q&a, that facilitated this work 
 - https://stefanwick.com/2017/06/24/uwp-app-with-systray-extension/  
 - https://stefanwick.com/2018/04/06/uwp-with-desktop-extension-part-1/ getting started, part-2 launching with params, part-3 communicating between components, part-4 submitting to the store  
