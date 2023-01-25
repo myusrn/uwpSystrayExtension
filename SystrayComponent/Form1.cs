@@ -31,7 +31,7 @@ namespace SystrayComponent
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {            
             this.linkLabel1.LinkVisited = true; // specify that the link was visited
-            Process.Start("https://paypal.me/ob1cot"); // navigate to a url
+            Process.Start("https://paypal.me/myusrn"); // navigate to a url
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

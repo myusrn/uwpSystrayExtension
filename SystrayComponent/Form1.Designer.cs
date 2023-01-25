@@ -98,7 +98,8 @@ namespace SystrayComponent
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(813, 40);
             this.label4.TabIndex = 3;
-            this.label4.Text = resources.GetString("label4.Text");
+            this.label4.Text = "Shift modifier used on Alt+C knocks additional 30% off width, on Alt+P changes to" +
+    " landscape mode and on Alt+T changes to use 4:3 aspect ratio.";
             // 
             // label5
             // 
@@ -135,10 +136,10 @@ namespace SystrayComponent
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(35, 405);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(616, 16);
+            this.label9.Size = new System.Drawing.Size(556, 16);
             this.label9.TabIndex = 8;
-            this.label9.Text = "5. Alt+Z - hibernate/sleep computer vs more verbose out of box Win+X,U,S keyboard" +
-    " shortcut sequence";
+            this.label9.Text = "5. Alt+Z - sleep computer vs more verbose out of box Win+X,U,S keyboard shortcut " +
+    "sequence";
             // 
             // label10
             // 
@@ -260,20 +261,20 @@ namespace SystrayComponent
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(35, 110);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(751, 16);
+            this.label18.Size = new System.Drawing.Size(761, 16);
             this.label18.TabIndex = 23;
-            this.label18.Text = "2. Alt+P[hone] center active window to 80% of screen height with 9:16 aspect rati" +
-    "o [ todo: make size slider configurable 60-90% ]";
+            this.label18.Text = "2. Alt+P[hone] center active window to 80% of screen height with 9:19.5 aspect ra" +
+    "tio [ todo: make size slider configurable 60-90% ]";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(35, 138);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(751, 16);
+            this.label19.Size = new System.Drawing.Size(758, 16);
             this.label19.TabIndex = 24;
-            this.label19.Text = "3. Alt+T[ablet] center active window to 80% of screen height with 16:9 aspect rat" +
-    "io [ todo: make size slider configurable 60-90% ]";
+            this.label19.Text = "3. Alt+T[ablet] center active window to 80% of screen height with 16:10 aspect ra" +
+    "tio [ todo: make size slider configurable 60-90% ]";
             // 
             // Form1
             // 

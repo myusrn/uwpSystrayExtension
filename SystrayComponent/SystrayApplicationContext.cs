@@ -95,9 +95,9 @@ namespace SystrayComponent
             rhw.RegisterCombo(1001, Modifiers.Alt, Keys.C); // Alt+C = center active window default/60%
             rhw.RegisterCombo(1002, Modifiers.Alt | Modifiers.Shift, Keys.C); // Alt+Shift+C = center active window 40%
             rhw.RegisterCombo(1003, Modifiers.Alt, Keys.P); // Alt+P = center active window with phone aspect ratio using 80% of height
-            rhw.RegisterCombo(1004, Modifiers.Alt | Modifiers.Shift, Keys.P); // Alt+P = center active window with ios phone aspect ratio using 80% of height
+            rhw.RegisterCombo(1004, Modifiers.Alt | Modifiers.Shift, Keys.P); // Alt+P = center active window with phone aspect ratio in landscape using 50% of height
             rhw.RegisterCombo(1005, Modifiers.Alt, Keys.T); // Alt+T = center active window with tablet aspect ratio using 80% of height
-            rhw.RegisterCombo(1006, Modifiers.Alt | Modifiers.Shift, Keys.T); // Alt+Shift+T = center active window with tablet aspect ratio using 50% of height
+            rhw.RegisterCombo(1006, Modifiers.Alt | Modifiers.Shift, Keys.T); // Alt+Shift+T = center active window with alternative tablet aspect ratio using 80% of height
             rhw.RegisterCombo(1007, Modifiers.Alt, Keys.Left); // Alt+L[eft Arrow] = place active window to left 3rd which stomps on existing browser previous page behavior
             rhw.RegisterCombo(1008, Modifiers.Alt, Keys.Right); // Alt+R[ight Arrow] = place active window to right 3rd which stomps on existing browser previous page behavior
             //rhw.RegisterCombo(1009, Modifiers.Alt | Modifiers.Shift, Keys.Left); // Alt+Shift+L[eft Arrow] = place active window to left 2/3rd or 3rd
@@ -190,24 +190,24 @@ namespace SystrayComponent
                 paw.CenterActiveWindowPosition(readAndPersistSettings.GetAltcWidth() * 2/3, minimizeAllOtherWindows: true);
                 hotkeyInProgress = false;
             }
-            else if (id == 1003) // center active window using default 80% height and phone 9/19 -> 9/16 [ current generation ] aspect ratio parameter settings
+            else if (id == 1003) // center active window using default 80% height and phone 9/19.5 [ smsg galaxy / apple iphone ] aspect ratio parameter settings
             {
-                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)9/16);
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)9/19);
                 hotkeyInProgress = false;
             }
-            else if (id == 1004) // center active window using default 70% height and phone 2/3 [ msft surface portrait ] or 3/4 [ apple ipad portrait ] aspect ratio parameter settings
+            else if (id == 1004) // center active window using default 50% height and phone 19.5/9 [ landscape ] or 80% height and 13/9 [ msft surface duo combined displays ] aspect ratio parameter settings
             {
-                paw.CenterActiveWindowPositionHeightAndAspectRatio(80 * 9/10, (decimal)3/4);
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(50, (decimal)19/9);
                 hotkeyInProgress = false;
             }
-            else if (id == 1005) // center active window using 80% height and tablet 16/9 [ amzn fire ] or 16/10 [ ssng gnote ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
+            else if (id == 1005) // center active window using 80% height and tablet 16/10 [ smsg galaxy ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
             {
-                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)16/9); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)16/10); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
                 hotkeyInProgress = false;
             }
-            else if (id == 1006) // center active window using 70% height and tablet 16/9 [ amzn fire ] or 16/10 [ ssng gnote ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
+            else if (id == 1006) // center active window using 80% height and tablet 16/10 [ smsg galaxy ] or 3/2 [ msft surface ] or 4/3 [ apple ipad ] aspect ratio parameter settings
             {
-                paw.CenterActiveWindowPositionHeightAndAspectRatio(80 * 9/10, (decimal)4/3); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
+                paw.CenterActiveWindowPositionHeightAndAspectRatio(80, (decimal)4/3); // or 5/4, 6/5, 7/6, 8/7, 9/8, 10/9 if you want something closer to a 1/1 aspect ratio
                 hotkeyInProgress = false;
             }
             else if (id == 1007) // place active window position to left using 40% for center 3rd
@@ -254,10 +254,14 @@ namespace SystrayComponent
                 //this.Exit(this, null);
                 hotkeyInProgress = false;
             }
-            else if (id == 1015) // initiate modern standby hibernate/sleep vs legacy [s3] suspend
+            else if (id == 1015) // initiate legacy standby [s3] vs modern standby [s0 low power mode] or hibernate [s4]
             {
                 var result = Application.SetSuspendState(PowerState.Suspend, true, false);
                 hotkeyInProgress = false;
+                // https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/modern-standby-states
+                // https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/modern-standby-vs-s3
+                // powercfg -energy -output c:\temp\pwrcfg - energy - report.html
+                // powercfg -sleepstudy -output c:\temp\pwrcfg-sleepstudy-report.html
             }
         }
 

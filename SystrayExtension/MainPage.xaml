@@ -49,8 +49,8 @@
                 <TextBox x:Name="AltcWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.AltcWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                 <Slider x:Name="AltcWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="50" Maximum="70" SmallChange="2" LargeChange="5" Value="{x:Bind ViewModel.AltcWidth, Mode=TwoWay}" />
             </StackPanel>
-            <TextBlock>2. Alt+P[hone] center active window to 80% of screen height with 9:16 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
-            <TextBlock>3. Alt+T[ablet] center active window to 80% of screen height with 16:9 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
+            <TextBlock>2. Alt+P[hone] center active window to 80% of screen height with 9:19.5 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
+            <TextBlock>3. Alt+T[ablet] center active window to 80% of screen height with 16:10 aspect ratio [ todo: make size slider configurable 60-90% ]</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <TextBlock>4. Alt+Arrow - position active window to left/right 3rd of screen using 30-50% for center 3rd</TextBlock>
                 <TextBox x:Name="AltArrowWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.AltArrowWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
@@ -61,17 +61,16 @@
                 <TextBox x:Name="CtrlArrowWidth" Margin="10,-20,10,0" Padding="7,0,0,0" Height="20" Width="40" Text="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                 <Slider x:Name="CtrlArrowWidthSlider" BorderBrush="Transparent" Margin="0,-15,0,0" Padding="0,-7,0,0" Height="20" Width="150" Minimum="60" Maximum="80" SmallChange="2" LargeChange="5" Value="{x:Bind ViewModel.CtrlArrowWidth, Mode=TwoWay}" />
             </StackPanel>
-            <TextBlock>Shift modifier used on Alt+C knocks additional 30% off width, on Alt+P knocks additional 10% off height and uses alternative 3:4 aspect ratio 
-                and on Alt+T knocks additional 10% off height and uses alternative 4:3 aspect ratio.</TextBlock>
+            <TextBlock>Shift modifier used on Alt+C knocks additional 30% off width, on Alt+P changes to landscape mode and on Alt+T changes to use 4:3 aspect ratio.</TextBlock>
             <TextBlock><Underline>Other Keyboard Shortcuts</Underline></TextBlock>
             <TextBlock>1. Alt+A - shows this "A Few Windows Niceties" [afwn] application usage info dialog [ disabled given common use for accept ]</TextBlock>
             <TextBlock>2. Alt+B - swap mouse buttons for use when want to change hands to change up posture</TextBlock>
             <TextBlock>3. Alt+M - put active window into move mode vs more verbose out of box Alt+Space+M keyboard shortcut sequence</TextBlock>
             <TextBlock>4. Alt+X - toggle active window between maximize and normal state vs more verbose out of box Alt+Space+X/R shortcuts</TextBlock>
             <!--<TextBlock>4. Alt+X - exits this application including closing associated systray / notification area process</TextBlock>-->
-            <TextBlock>5. Alt+Z - hibernate/sleep computer vs more verbose out of box Win+X,U,S keyboard shortcut sequence</TextBlock>
+            <TextBlock>5. Alt+Z - sleep computer vs more verbose out of box Win+X,U,S keyboard shortcut sequence</TextBlock>
             <TextBlock>To enable win[dows] key on right side of keyboard in lieu of rarely used one, e.g. context menu key on microsoft keyboards and print 
-                screen on lenovo x1 carbon/yoga devices, see <Hyperlink NavigateUri="https://github.com/randyrants/sharpkeys/releases">SharpKeys</Hyperlink>.
+                screen on lenovo thinkpad laptop keyboards, see <Hyperlink NavigateUri="https://github.com/randyrants/sharpkeys/releases">SharpKeys</Hyperlink>.
                 A windows keyboard shortcut that is useful in conjunction with the ones above is Win+Home that will minimize all windows except the 
                 currently active one. If you want to enable this app to automatically start when you signin see win+r | shell:appsfolder for context menu 
                 allowing creation of shortcut that you can then place in wint+r | shell:startup folder. [ todo: provide a 
@@ -81,7 +80,7 @@
                 This can be handy for use getting rid of all other windows after executing an Alt-C[enter] or Alt+P[hone] or Alt+T[ablet] active window positioning.
             </TextBlock>-->
             <StackPanel Orientation="Horizontal" Margin="10,0,20,20" HorizontalAlignment="Right">
-                <TextBlock VerticalAlignment="Center">optional paypal donations <Hyperlink NavigateUri="https://paypal.me/ob1cot">here</Hyperlink></TextBlock>
+                <TextBlock VerticalAlignment="Center">optional paypal donations <Hyperlink NavigateUri="https://paypal.me/myusrn">here</Hyperlink></TextBlock>
                 <Button Name="close" AccessKey="S" Click="close_Click" Margin="10, 0, 0, 20"><TextBlock Margin="0, 0, 0, 0">Minimize to <Underline>S</Underline>ystem Tray</TextBlock></Button>
                 <!--<Button Name="exit" AccessKey="i" Click="exit_Click" Margin="10, 0, 0, 20"><TextBlock Margin="0, 0, 0, 0">Ex<Underline>i</Underline>t</TextBlock></Button>--> <!-- irrelevant as close/exit same thing in this case -->
             </StackPanel>

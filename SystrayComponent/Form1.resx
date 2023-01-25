@@ -117,11 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Shift modifier used on Alt+C knocks additional 30% off width, on Alt+P knocks additional 10% off height and uses alternative 3:4 aspect ratio and on Alt+T knocks additional 10% off height and uses alternative 4:3 aspect ratio.</value>
-  </data>
   <data name="linkLabel2.Text" xml:space="preserve">
-    <value>To enable win[dows] key on right side of keyboard in lieu of rarely used one, e.g. context menu key on microsoft keyboards and print screen on lenovo x1 carbon/yoga devices, see SharpKeys. A windows keyboard shortcut that is useful in conjunction with the ones above is Win+Home that will minimize all windows except the currently active one. If you want to enable this app to automatically start when you signin see win+r | shell:appsfolder for context menu allowing creation of shortcut that you can then place in wint+r | shell:startup folder. [ todo: provide a "Start app at Sign In" setting ]</value>
+    <value>To enable win[dows] key on right side of keyboard in lieu of rarely used one, e.g. context menu key on microsoft keyboards and print screen on lenovo thinkpad laptop keyboards, see SharpKeys. A windows keyboard shortcut that is useful in conjunction with the ones above is Win+Home that will minimize all windows except the currently active one. If you want to enable this app to automatically start when you signin see win+r | shell:appsfolder for context menu allowing creation of shortcut that you can then place in wint+r | shell:startup folder. [ todo: provide a "Start app at Sign In" setting ]</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

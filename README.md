@@ -1,5 +1,5 @@
 ﻿# A Few Windows Niceties (afwn) 
-last visited = 09/05/22, status = in-progress
+last visited = 01/25/23, status = in-progress
 
 Application provides global hotkey, aka keyboard shortcut, behaviors which i found myself wanting ever since moving to wqhd 16:9 aspect ratio displays and even more so with recent use of the new ultrawide 21:9 aspect ratio displays. While windows provides Win+LeftArrow and Win+RightArrow for creating initial 50/50 layout, that can then be dragged to any split you like, I found these didn't address the window positioning scenarios i was commonly wanting quick and easy access to when doing reading and development work on widescreen displays. 
 
@@ -21,7 +21,8 @@ The current release is available in the microsoft store. The benefit of installi
 - In windows enable win+i [ settings ] | privacy & security | for developers | developer mode = off -> on [ which you can turn back off when build, run, debug/test work is done ]
 - For SystrayExtension\SystrayExtension_TemporaryKey.pfx [ not password protected ] and Package\Package_TemporaryKey.pfx [ password protected and persisted in user certificates store ] see Packages | Package.appxmanifest | Packaging | Choose Certificate | Create & How to create package signing certificate -&gt; https://docs.microsoft.com/en-us/windows/msix/package/create-certificate-package-signing.  Also
 review 'Partner Center App Invalid package family name Invalid package publisher name' -&gt; https://stackoverflow.com/questions/40951570/uwp-app-invalid-package-family-name-after-update-certificate which outlines
-how whenever you are having to recreate the Package_TemporaryKey.pfx you need to paste your publisher guid, e.g. in this case 97AB39F5-C8A8-4ED8-A44F-452C1110B98B, as the certificate common name.
+how whenever you are having to recreate the Package_TemporaryKey.pfx you need to paste your publisher guid, e.g. in this case 97AB39F5-C8A8-4ED8-A44F-452C1110B98B, as the certificate common name. Both have Intended Purposes / Enhanced Key 
+Usage assignments Code Signing (1.3.6.1.5.5.7.3.3), Unknown Key Usage (1.3.6.1.4.1.311.84.3.1) .
 - For Package_StoreAssociation.xml see Package | Publish | Associate App with the Store | Include apps that already have packages = checked | Refresh | &lt;select existing published app entry&gt; | Asssociate -&gt; Package.StoreAssociation.xml and 'create or get uwp store pfx' -&gt; https://stackoverflow.com/questions/42209953/how-to-create-or-get-a-new-storekey-pfx-for-uwp-application   
 - Select store app package project with build configuration Deploy enabled, in this case Package, or Uwp System Tray project, in this case SysTray_Component, and choose 'Set as Startup Project' 
 - Press F5 to Start Debugging or Ctrl+F5 to Start Without Debugging
@@ -42,6 +43,12 @@ from admin prompt for %i in ( IconStreams PastIconsStream PromotedIconCache ) do
 then from non-admin prompt pskill explorer.exe & explorer.exe to refresh win+i [ settings ] | personalization | taskbar | other system tray icons list  
   
 # Feature and Fix updates
+01/25/23 - build updates and feature updates
+1. updated phone resizing aspect ratio from 9:16 to 9:19.5 80% of screen height to align with modern phones and shift modifier to 19.5:9 landscape mode 50% of screen height
+2. updated tablet window resizing aspect ratio from 16:9 to 16:10 80% of screen height to align with modern samsung tablets and left shift modifier as is using ipad 4:3 80%
+3. updated comments on use of SetSuspendState api and the modern standby vs legacy and hibernate behaviors
+4. updated notes about recreation of package build output signing certificate keys
+
 09/04/22 - build updates and feature updates
 1. Package | Properties | Package | Target Version updated to current 10.0.22621 [ 22h2 ] from 10.0.17663.0 [ 1809 oct 2018 update ] and Min Version updated to 10.0.17663.0 from 16299.0 [ 1709 fall 2017 creators update ]  
 and Package.appxmanifest | open in notepad | TargetDeviceFamily Name="Windows.Universal/Desktop" MinVersion and MaxVersionTested from 10.0.16299.0 and 10.0.17663.0 to 10.0.0.0 for both
