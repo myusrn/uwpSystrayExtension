@@ -63,8 +63,8 @@ namespace SystrayComponent
                 if (key != null)
                 {
                     if (key.GetValue("IconStreams") != null) key.DeleteValue("IconStreams");
-                    if (key.GetValue("PastIconStream") != null) key.DeleteValue("PastIconsStream");
-                    if (key.GetValue("PromotedIconCache") != null) key.DeleteValue("PromotedIconCache");
+                    if (key.GetValue("PastIconsStream") != null) key.DeleteValue("PastIconsStream");
+                    //if (key.GetValue("PromotedIconCache") != null) key.DeleteValue("PromotedIconCache");
                     foreach (var process in Process.GetProcessesByName("explorer")) process.Kill(); // typically only one instance
                     //Process.Start("%windir%\\explorer.exe"); // restarted automatically unlike when you use pskill on command line
                 }
