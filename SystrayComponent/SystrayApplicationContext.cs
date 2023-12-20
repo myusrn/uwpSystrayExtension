@@ -107,10 +107,11 @@ namespace SystrayComponent
 // 28dec18 disabled given common use for accept
             //rhw.RegisterCombo(1011, Modifiers.Alt, Keys.A); // Alt+A = show a few windows niceties usage info [ and settings customization ] window
             rhw.RegisterCombo(1012, Modifiers.Alt, Keys.B); // Alt+B = swap mouse buttons
-            rhw.RegisterCombo(1013, Modifiers.Alt, Keys.M); // Alt+M = center active window to mobile 19:9 aspect ratio <- put active window into move mode vs oob Alt+Space+M sequence
-            rhw.RegisterCombo(1014, Modifiers.Alt, Keys.X); // Alt+X = toggle active window between maximum and normal state vs oob Alt+Space+X/R sequence which stomps on existing edge settings and more shortcut
+            rhw.RegisterCombo(1013, Modifiers.Alt, Keys.M); // Alt+M = put active window into move mode vs oob Alt+Space+M sequence
+            //rhw.RegisterCombo(1014, Modifiers.Alt, Keys.S); // Alt+S = toggle teams client between Appear Away and Reset Status presence mode, which stomps on vstudio Alt+[Te]S[t] existing assignments
+            rhw.RegisterCombo(1015, Modifiers.Alt, Keys.X); // Alt+X = toggle active window between maximum and normal state vs oob Alt+Space+X/R sequence which stomps on existing edge settings and more shortcut
             // or Alt+X = exit this application including closing systray/notification area process which stomps on existing edge settings and more shortcut
-            rhw.RegisterCombo(1015, Modifiers.Alt, Keys.Z); // Alt+Z = hibernate/sleep computer, given vs17 Alt+H[elp] and Alt+[Te]S[t] existing assignments, vs oob Win+X,U,S sequence
+            rhw.RegisterCombo(1016, Modifiers.Alt, Keys.Z); // Alt+Z = hibernate/sleep computer, given vstudio Alt+H[elp] and Alt+[Te]S[t] existing assignments, vs oob Win+X,U,S sequence
 
             paw = new PositionActiveWindow(); smb = new SwapMouseButtons();
         } 
@@ -243,18 +244,24 @@ namespace SystrayComponent
                 else smb.SetMouseButtonsSetting(MouseButtonsSetting.RightHanded);
                 hotkeyInProgress = false;
             }
-            else if (id == 1013) // center active window to mobile 19:9 aspect ratio <- put active window into move mode
+            else if (id == 1013) // put active window into move mode
             {
                 paw.PutActiveWindowsIntoMoveMode();
                 hotkeyInProgress = false;
             }
-            else if (id == 1014) // toggle active window between maximum and normal state <- exit this application including closing systray/notification area process 
+            else if (id == 1014) // toggle teams client between Appear Away and Reset Status presence mode 
+            {
+                paw.ToggleTeamsClientBetweenAppearAwayResetStatusPresence();
+                //this.Exit(this, null);
+                hotkeyInProgress = false;
+            }
+            else if (id == 1015) // toggle active window between maximum and normal state <- exit this application including closing systray/notification area process 
             {
                 paw.ToggleActiveWindowsBetweenMaximizeNormalState();
                 //this.Exit(this, null);
                 hotkeyInProgress = false;
             }
-            else if (id == 1015) // initiate legacy standby [s3] vs modern standby [s0 low power mode] or hibernate [s4]
+            else if (id == 1016) // initiate legacy standby [s3] vs modern standby [s0 low power mode] or hibernate [s4]
             {
                 var result = Application.SetSuspendState(PowerState.Suspend, true, false);
                 hotkeyInProgress = false;

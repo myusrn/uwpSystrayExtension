@@ -1,7 +1,7 @@
 ﻿# A Few Windows Niceties (afwn) 
-last visited = 01/25/23, status = in-progress
+last visited = 12/20/23, status = in-progress
 
-Application provides global hotkey, aka keyboard shortcut, behaviors which i found myself wanting ever since moving to wqhd 16:9 aspect ratio displays and even more so with recent use of the new ultrawide 21:9 aspect ratio displays. While windows provides Win+LeftArrow and Win+RightArrow for creating initial 50/50 layout, that can then be dragged to any split you like, I found these didn't address the window positioning scenarios i was commonly wanting quick and easy access to when doing reading and development work on widescreen displays. 
+Application provides global hotkey, aka keyboard shortcut, behaviors which i found myself wanting ever since moving to 25" and greater 16:9 aspect ratio displays and even more so with newer ultrawide 21:9 and super-ultrawide 32:9 aspect ratio displays. While windows provides Win+LeftArrow and Win+RightArrow keyboard shortcuts for creating initial 50/50 layout, that can then be dragged to any split you like, and newer min/max window sizing icon mouse hover for a set of predefined window placements, I found these didn't address the window positioning scenarios i was commonly wanting quick and easy keyboard shortcut access to when doing reading and development work on widescreen displays. 
 
 It also includes non-window positioning and sizeing related hotkeys such as on for mouse button swapping which i regularly use to keep from getting stuck in mouse hand specific postures during long work sessions. See the app's system tray, aka notification area, "Open Usage Info" context menu option for details on full list of enabled hotkeys.
 
@@ -16,15 +16,15 @@ The current release is available in the microsoft store. The benefit of installi
 - for Microsoft Store app listing search on "A Few Windows Niceties"
 
 # Build, Deploy and Run from Sources
-- In visual studio installer enable the '.NET desktop development' and 'Universal Windows Platform development' workloads and confirm individual components '.NET' -> '.NET 6.0 Runtime (LTS), 
-'.NET Framework 4.8[.1] SDK', '.NET Framework 4.8[.1] targeting pack' and 'SDK, libraries, and frameworks' -> 'Windows 11 SDK (10.0.22621.0)' are included
-- In windows enable win+i [ settings ] | privacy & security | for developers | developer mode = off -> on [ which you can turn back off when build, run, debug/test work is done ]
+- In visual studio installer enable the '.NET desktop development' and 'Universal Windows Platform development' workloads and confirm individual components '.NET' -> '.NET 6.0 Runtime (Long Term Support), 
+'.NET Framework 4.8 SDK', '.NET Framework 4.8 targeting pack' and 'SDK, libraries, and frameworks' -> 'Windows 11 SDK (10.0.22621.0)' are included
+- In windows enable win+i [ settings ] | system | for developers | developer mode = off -> on [ which you can turn back off when build, run, debug/test work is done ]
 - For SystrayExtension\SystrayExtension_TemporaryKey.pfx [ not password protected ] and Package\Package_TemporaryKey.pfx [ password protected and persisted in user certificates store ] see Packages | Package.appxmanifest | Packaging | Choose Certificate | Create & How to create package signing certificate -&gt; https://docs.microsoft.com/en-us/windows/msix/package/create-certificate-package-signing.  Also
 review 'Partner Center App Invalid package family name Invalid package publisher name' -&gt; https://stackoverflow.com/questions/40951570/uwp-app-invalid-package-family-name-after-update-certificate which outlines
 how whenever you are having to recreate the Package_TemporaryKey.pfx you need to paste your publisher guid, e.g. in this case 97AB39F5-C8A8-4ED8-A44F-452C1110B98B, as the certificate common name. Both have Intended Purposes / Enhanced Key 
 Usage assignments Code Signing (1.3.6.1.5.5.7.3.3), Unknown Key Usage (1.3.6.1.4.1.311.84.3.1) .
 - For Package_StoreAssociation.xml see Package | Publish | Associate App with the Store | Include apps that already have packages = checked | Refresh | &lt;select existing published app entry&gt; | Asssociate -&gt; Package.StoreAssociation.xml and 'create or get uwp store pfx' -&gt; https://stackoverflow.com/questions/42209953/how-to-create-or-get-a-new-storekey-pfx-for-uwp-application   
-- Select store app package project with build configuration Deploy enabled, in this case Package, or Uwp System Tray project, in this case SysTray_Component, and choose 'Set as Startup Project' 
+- Select store app package project with build configuration Deploy enabled, in this case Package, or Uwp System Tray project, in this case SystrayComponent, and choose 'Set as Startup Project' 
 - Press F5 to Start Debugging or Ctrl+F5 to Start Without Debugging
 
 # Publish new Build to Store
@@ -43,6 +43,10 @@ from admin prompt for %i in ( IconStreams PastIconsStream PromotedIconCache ) do
 then from non-admin prompt pskill explorer.exe & explorer.exe to refresh win+i [ settings ] | personalization | taskbar | other system tray icons list  
   
 # Feature and Fix updates
+12/20/23 - feature updates
+1. updated alt+c, atl+t, alt+arrow, ctrl+arrow and their shift modifier behaviors to work when used on all displays of a multiple displays setup
+2. plumbed out alt+s[tatus] keyboard shortcut modifier path to later implement toggling teams client between Appear Away and Reset Status presence mode 
+
 01/25/23 - build updates and feature updates
 1. updated phone resizing aspect ratio from 9:16 to 9:19.5 80% of screen height to align with modern phones and shift modifier to 19.5:9 landscape mode 50% of screen height
 2. updated tablet window resizing aspect ratio from 16:9 to 16:10 80% of screen height to align with modern samsung tablets and left shift modifier as is using ipad 4:3 80%

@@ -199,6 +199,52 @@ namespace SystrayComponent
             }
         }
 
+        public void ToggleTeamsClientBetweenAppearAwayResetStatusPresence()
+        {
+            //TODO: using c# how do i access microsoft teams work or school application presence status toggle between appear away and automatic presence setting
+
+            /***
+// https://nuget.org/packages/Microsoft.TeamsFx/2.2.0#show-readme-container A NuGet package for Blazor projects which aims to reduce the developer tasks of
+// implementing identity and access to cloud resources.
+            ***/
+            
+            /***              
+// Note that you need to register your application in Azure Active Directory and obtain an access token to use the Graph API. You also need to install the Microsoft Graph SDK for C# in your project. 
+// You can find more information and examples on how to do this in this blog post or this Stack Overflow answer. ->
+// https://stackoverflow.com/questions/65847469/get-microsoft-teams-presence-status-in-custom-app
+            // Get the GraphServiceClient instance
+            GraphServiceClient graphClient = GetGraphServiceClient();
+
+            // Get the user's presence
+            Presence presence = await graphClient.Me.Presence
+                .Request()
+                .GetAsync();
+
+            // Print the user's availability and activity
+            Console.WriteLine($"Availability: {presence.Availability}");
+            Console.WriteLine($"Activity: {presence.Activity}");
+
+            // Get the GraphServiceClient instance
+            GraphServiceClient graphClient = GetGraphServiceClient();
+
+            // Create a new presence object with the desired availability and activity
+            Presence newPresence = new Presence
+            {
+                Availability = "Away",
+                Activity = "Away"
+            };
+
+            // Update the user's presence
+            await graphClient.Me.Presence
+                .Request()
+                .UpdateAsync(newPresence);
+
+            // Print the updated user's availability and activity
+            Console.WriteLine($"Availability: {newPresence.Availability}");
+            Console.WriteLine($"Activity: {newPresence.Activity}"); 
+            ***/
+        }
+
         public void ToggleActiveWindowsBetweenMaximizeNormalState()
         {   
             var awh = GetActiveWindowHandle();
@@ -256,20 +302,32 @@ namespace SystrayComponent
             else swState = SW_SHOW; // not hidden, minimized or maximized so a normal visible window that could be SW_SHOW, _SHOWNA, _RESTORE, etc
             if (swState != SW_SHOW) ShowWindow(awh, SW_RESTORE);
 
-            var primaryScreen = Screen.PrimaryScreen;
-//#if DEBUG
-//            var allScreens = Screen.AllScreens; var heightOfTaskbar = primaryScreen.Bounds.Bottom - primaryScreen.WorkingArea.Bottom;
-//#endif
-            //var sr = GetScreenRectangle(); // doesn't account for taskbar which you'd have to hardcode depending on display | scale and layout | size of . . .  + resolution settings
-            var sr = primaryScreen.WorkingArea; // accounts for taskbar
+            //var activeScreen = Screen.PrimaryScreen;
+            var activeScreen = Screen.FromHandle(awh); // to cover multiple display setups
+#if DEBUG
+            var allScreens = Screen.AllScreens;
+            for (int i = 0; i < allScreens.Length; i++)
+            {
+                // If the current screen is equal to the active screen, print its index and device name
+                if (allScreens[i].DeviceName == activeScreen.DeviceName)
+                {
+                    Console.WriteLine("The active window is displayed on screen {0} with device name {1}", i, allScreens[i].DeviceName); break;
+                }
+            }
+            var heightOfTaskbar = activeScreen.Bounds.Bottom - activeScreen.WorkingArea.Bottom;
+#endif
 
-            var leftRightBorder = Convert.ToDecimal(100 - percentageOfTotalWidth) / 2 / 100;
-            
-            var position = new Rect() { Left = Convert.ToInt16(sr.Right * leftRightBorder), Top = sr.Top + topBottomBorder /*, 
-                Right = Convert.ToInt16(sr.Right * (1 - leftRightBorder)) - Left, Bottom = sr.Bottom - topBottomBorder - Top */
+            //var sr = GetScreenRectangle(); // doesn't account for taskbar which you'd have to hardcode depending on display | scale and layout | size of . . .  + resolution settings
+            var sr = activeScreen.WorkingArea; // accounts for taskbar
+
+            var leftRightBorderPercentage = Convert.ToDecimal(100 - percentageOfTotalWidth) / 2 / 100;
+            var leftRightBorder = Convert.ToInt16(sr.Width * leftRightBorderPercentage);
+
+            var position = new Rect() { Left = sr.Left + leftRightBorder, Top = sr.Top + topBottomBorder /* , 
+                Right = sr.Right - leftRightBorder - Left, Bottom = sr.Bottom - topBottomBorder - Top */
             };
-            position.Right = Convert.ToInt16(sr.Right * (1 - leftRightBorder)) - position.Left; // change in x not absolute x position
-            position.Bottom = sr.Bottom - topBottomBorder - position.Top; // change in y not absolute y position
+            position.Right = sr.Right - leftRightBorder - position.Left; // change in x not absolute x position 
+            position.Bottom = sr.Bottom - topBottomBorder - position.Top; // change in y not absolute y position 
 
             // here is a a couple ways to add/subtract from top/bottom position settings in special app cases or uwp vs desktop app cases
             //var awt = GetActiveWindowTitle();
@@ -298,21 +356,20 @@ namespace SystrayComponent
             else swState = SW_SHOW; // not hidden, minimized or maximized so a normal visible window that could be SW_SHOW, _SHOWNA, _RESTORE, etc
             if (swState != SW_SHOW) ShowWindow(awh, SW_RESTORE);
 
-            var primaryScreen = Screen.PrimaryScreen;
-//#if DEBUG
-//            var allScreens = Screen.AllScreens; var heightOfTaskbar = primaryScreen.Bounds.Bottom - primaryScreen.WorkingArea.Bottom;
-//#endif
+            var activeScreen = Screen.FromHandle(awh); // to cover multiple display setups
+
             //var sr = GetScreenRectangle(); // doesn't account for taskbar which you'd have to hardcode depending on display | scale and layout | size of . . .  + resolution settings
-            var sr = primaryScreen.WorkingArea; // accounts for taskbar
+            var sr = activeScreen.WorkingArea; // accounts for taskbar
 
             var topBottomBorderPercent = Convert.ToDecimal(100 - percentageOfTotalHeight) / 2 / 100;
-            var leftRightBorder = Convert.ToInt16((sr.Right - sr.Left - ((sr.Bottom - sr.Top) * (Convert.ToDecimal(percentageOfTotalHeight) / 100) * aspectRatio)) / 2);
-
-            var position = new Rect() { Left = sr.Left + leftRightBorder, Top = Convert.ToInt16(sr.Bottom * topBottomBorderPercent) /*, 
-                Right = sr.Right - leftRightBorder - Left, Bottom = Convert.ToInt16(sr.Top * (1 - topBottomBorder)) - Top */
+            var topBottomBorder = Convert.ToInt16(sr.Height * topBottomBorderPercent);
+            var leftRightBorder = Convert.ToInt16((sr.Width - (sr.Height * (Convert.ToDecimal(percentageOfTotalHeight) / 100) * aspectRatio)) / 2);
+            
+            var position = new Rect() { Left = sr.Left + leftRightBorder, Top = sr.Top + topBottomBorder /* , 
+                Right = sr.Right - leftRightBorder - Left, Bottom = sr.Bottom - topBottomBorder - Top */
             };
-            position.Right = sr.Right - leftRightBorder - position.Left; // change in x not absolute x position            
-            position.Bottom = Convert.ToInt16(sr.Bottom * (1 - topBottomBorderPercent)) - position.Top; // change in y not absolute y position
+            position.Right = sr.Right - leftRightBorder - position.Left;
+            position.Bottom = sr.Bottom - topBottomBorder - position.Top;
 
             // here is a a couple ways to add/subtract from top/bottom position settings in special app cases or uwp vs desktop app cases
             //var awt = GetActiveWindowTitle();
@@ -399,55 +456,53 @@ namespace SystrayComponent
 // resizing
             /* if (!IsWindowInNormalState(awh)) */ PutWindowIntoNormalState(awh);
 
-            var primaryScreen = Screen.PrimaryScreen;
-//#if DEBUG
-//            var allScreens = Screen.AllScreens; var heightOfTaskbar = primaryScreen.Bounds.Bottom - primaryScreen.WorkingArea.Bottom;
-//#endif
+            var activeScreen = Screen.FromHandle(awh); // to cover multiple display setups
+
             //var sr = GetScreenRectangle(); // doesn't account for taskbar which you'd have to hardcode depending on display | scale and layout | size of . . .  + resolution settings
-            var sr = primaryScreen.WorkingArea; // accounts for taskbar
+            var sr = activeScreen.WorkingArea; // accounts for taskbar
 
             // option 1
-            var centerWindowSize = (sr.Right - sr.Left) * centerPercentageOfTotalWidth / 100;
+            var centerWindowSize = (sr.Width) * centerPercentageOfTotalWidth / 100;
             if ((centerWindowSize % 2) != 0) centerWindowSize++; // need even number or math to process alt/ctrl left/right moves can get stuck
-            var leftRightWindowSize = ((sr.Right - sr.Left) - centerWindowSize) / 2;
+            var leftRightWindowSize = ((sr.Width) - centerWindowSize) / 2;
 
             // option 2
             //var leftRightPercentageOfTotalWidth = (100 - centerPercentageOfTotalWidth) / 2;
-            //var leftRightWindowSize = (sr.Right - sr.Left) * leftRightPercentageOfTotalWidth / 100;
+            //var leftRightWindowSize = (sr.Width) * leftRightPercentageOfTotalWidth / 100;
             //if ((leftRightWindowSize % 2) != 0) leftRightWindowSize++; // need even number or math to process alt/ctrl left/right moves can get stuck
-            //var centerWindowSize = (sr.Right - sr.Left) - (leftRightWindowSize * 2);
+            //var centerWindowSize = (sr.Width) - (leftRightWindowSize * 2);
 
             var position = new Rect() { Top = sr.Top + topBottomBorder };
-            position.Bottom = sr.Bottom - topBottomBorder - position.Top; // change in y not absolution y position 
+            position.Bottom = sr.Bottom - topBottomBorder - position.Top; // change in y not absolute y position 
 
             MoveToPosition mtp = GetMoveToPosition(arrangeDirection, sr, centerWindowSize, leftRightWindowSize, screenPositions);
             if (mtp == MoveToPosition.Left)
             {
-                position.Left = 0;
-                position.Right = leftRightWindowSize; // change in x not absolution x position
+                position.Left = sr.Left;
+                position.Right = leftRightWindowSize; // change in x not absolute x position
             }
             else if (mtp == MoveToPosition.LeftTwoThirds)
             {
-                position.Left = 0;
-                position.Right = leftRightWindowSize + centerWindowSize; // change in x not absolution x position
+                position.Left = sr.Left;
+                position.Right = leftRightWindowSize + centerWindowSize; // change in x not absolute x position
             }
             else if (mtp == MoveToPosition.Center)
             {
                 position.Left = sr.Left + leftRightWindowSize;
                 //position.Left = sr.Right - leftRightWindowSize - centerWindowSize; // alternative calculation
-                position.Right = centerWindowSize; // change in x not absolution x position
+                position.Right = centerWindowSize; // change in x not absolute x position
             }
             else if (mtp == MoveToPosition.RightTwoThirds)
             {
                 position.Left = sr.Right - leftRightWindowSize - centerWindowSize;
                 //position.Left = sr.Left + leftRightWindowSize; // alternative calculation
-                position.Right = centerWindowSize + leftRightWindowSize; // change in x not absolution x position
+                position.Right = centerWindowSize + leftRightWindowSize; // change in x not absolute x position
             }
             else if (mtp == MoveToPosition.Right)
             {
                 position.Left = sr.Right - leftRightWindowSize;
                 //position.Left = sr.Left + leftRightWindowSize + centerWindowSize; // alternative calculation
-                position.Right = leftRightWindowSize; // change in x not absolution x position
+                position.Right = leftRightWindowSize; // change in x not absolute x position
             }
 
             // here is a a couple ways to add/subtract from top/bottom position settings in special app cases or uwp vs desktop app cases
